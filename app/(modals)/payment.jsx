@@ -4,10 +4,10 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { defaultStyles } from "@/constants/Styles";
-import Colors from "@/constants/Colors";
-
+import paymentSuccessfulAnimation from "@/assets/lottie/payment-successful.json";
 
 const payment = () => {
+    const animation = useRef(null);
     const [paymentSuccessful, setPaymentSuccessful] = useState(false);
 
     const paymentFormValidationSchema = Yup.object().shape({
@@ -51,15 +51,35 @@ const payment = () => {
         }
     };
 
+    useEffect(() => {
+        if (paymentSuccessful) {
+            animation.current?.play();
+        }
+    }, [paymentSuccessful]);
+
     return (
         <View className="flex-1 items-center justify-center">
             {paymentSuccessful ? (
-                <TouchableOpacity
-                    style={defaultStyles.btn}
-                    onPress={() => router.replace("/(tabs)/orders")}
-                >
-                    <Text style={defaultStyles.btnText}>Show my Orders</Text>
-                </TouchableOpacity>
+                <>
+                    <LottieView
+                        autoPlay
+                        ref={animation}
+                        style={{
+                            width: 200,
+                            height: 200,
+                            backgroundColor: "#DFE0DC1A",
+                        }}
+                        source={paymentSuccessfulAnimation}
+                    />
+                    <TouchableOpacity
+                        style={defaultStyles.btn}
+                        onPress={() => router.replace("/(tabs)/orders")}
+                    >
+                        <Text style={defaultStyles.btnText}>
+                            Show my Orders
+                        </Text>
+                    </TouchableOpacity>
+                </>
             ) : (
                 <Formik
                     initialValues={{
