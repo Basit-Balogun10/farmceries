@@ -13,7 +13,7 @@ import LottieView from "lottie-react-native";
 
 const payment = () => {
     const animation = useRef(null);
-    const [paymentSuccessful, setPaymentSuccessful] = useState(true);
+    const [paymentSuccessful, setPaymentSuccessful] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const params = useLocalSearchParams();
     const router = useRouter();
