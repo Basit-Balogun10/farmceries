@@ -31,7 +31,11 @@ const IMG_HEIGHT = 300;
 const DetailsPage = () => {
     const { id } = useLocalSearchParams();
     const router = useRouter();
-    const product = (appData.products as any[]).find((item) => item.id === id);
+    const product = appData.products.find(
+        (item) => item.id === parseInt(id, 10)
+    );
+    console.log("Data: ", appData, id);
+    console.log("Product: ", product);
     const navigation = useNavigation();
     const scrollRef = useAnimatedRef<Animated.ScrollView>();
     const [priceError, setPriceError] = useState(false);
@@ -176,7 +180,7 @@ const DetailsPage = () => {
                     <Text style={styles.location}>{product.shortDesc}</Text>
                     <Text style={styles.rooms}>
                         Date Uploaded · {product.dateCreated.split("T")[0]} ·{" "}
-                        Freshness Period ·{product.shelfLife.split("T")[0]}
+                        Freshness Period · {product.shelfLife.split("T")[0]}
                     </Text>
                     <View style={{ flexDirection: "row", gap: 4 }}>
                         <Ionicons name="star" size={16} />
@@ -217,9 +221,10 @@ const DetailsPage = () => {
                         </View>
 
                         <View style={styles.divider} />
-
-                        <Text style={styles.description}>
-                            {product.description}
+                    </View>
+                    <View className="mt-4">
+                        <Text className="" style={styles.description}>
+                            {product.longDesc}
                         </Text>
                     </View>
                 </View>
@@ -233,13 +238,13 @@ const DetailsPage = () => {
                     style={{
                         flexDirection: "row",
                         justifyContent: "space-between",
-                        alignItems: "center",
+                        alignItems: "flex-end",
                     }}
                 >
                     {product.hasPriceRange ? (
-                        <View className="">
+                        <View className="gap-2">
                             <Text className="text-xs">
-                                Enter desired quantity ₦{product.minPrice} - ₦
+                                Desired Quantity ₦{product.minPrice} - ₦
                                 {product.maxPrice}
                             </Text>
                             <TextInput
@@ -247,16 +252,16 @@ const DetailsPage = () => {
                                 keyboardType="numeric"
                                 value={customPrice}
                                 onChangeText={setCustomPrice}
-                                className={`h-8 p-1 w-8 font-[Rubik] border ${
+                                className={`h-12 p-2 w-32 font-[Rubik] border ${
                                     priceError
                                         ? "border-red-500"
                                         : "border-green-pale"
-                                } rounded-md`}
+                                } rounded-md text-center`}
                             />
                         </View>
                     ) : (
                         <TouchableOpacity style={styles.footerText}>
-                            <Text style={styles.footerPrice}>
+                            <Text className="" style={styles.footerPrice}>
                                 ₦{product.price}
                             </Text>
                         </TouchableOpacity>
@@ -264,16 +269,23 @@ const DetailsPage = () => {
 
                     <Link href="/(modals)/payment" asChild>
                         <TouchableOpacity
-                            style={[
-                                defaultStyles.btn,
-                                { paddingRight: 20, paddingLeft: 20 },
-                            ]}
+                            style={defaultStyles.btn}
+                            className={`${
+                                product.hasPriceRange && customPrice === "" ? "opacity-50" : "opacity-100"
+                            } px-5`}
                             disabled={
                                 product.hasPriceRange && customPrice === ""
                             }
-                            onPress={() => router.push({pathName: "/(modals)/payment", params: {productId: product.id}})}
+                            onPress={() =>
+                                router.push({
+                                    pathName: "/(modals)/payment",
+                                    params: { productId: product.id },
+                                })
+                            }
                         >
-                            <Text style={defaultStyles.btnText}>Buy Now</Text>
+                            <Text style={defaultStyles.btnText}>
+                                Buy Product
+                            </Text>
                         </TouchableOpacity>
                     </Link>
                 </View>
@@ -339,7 +351,8 @@ const styles = StyleSheet.create({
         gap: 4,
     },
     footerPrice: {
-        fontSize: 18,
+        fontSize: 25,
+        fontWeight: 'bold',
         fontFamily: "Rubik",
     },
     roundButton: {

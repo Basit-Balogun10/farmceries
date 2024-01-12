@@ -145,9 +145,10 @@ const Page = () => {
           {!isSignedIn && (
               <Link href={"/(modals)/login"} asChild>
                   <TouchableOpacity
+                      className="w-1/2"
                       style={defaultStyles.btn}
                   >
-                      <Text style={defaultStyles.btnText}>Continue</Text>
+                      <Text style={defaultStyles.btnText}>Log In</Text>
                   </TouchableOpacity>
               </Link>
           )}

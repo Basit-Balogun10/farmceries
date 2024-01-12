@@ -12,7 +12,7 @@ const Page = () => {
     const [products, setProducts] = useState(appData.products);
     const [markets, setMarkets] = useState(appData.markets);
     const [category, setCategory] = useState<string>("All");
-    const [filter, setFilter] = useState({});
+    const [isFiltered, setIsFiltered] = useState(false);
     const params = useLocalSearchParams();
 
     useEffect(() => {
@@ -52,7 +52,10 @@ const Page = () => {
                 );
                 setProducts(filteredProducts);
             }
-            setFilter(params);
+
+            if (market || vendor || price) {
+                setIsFiltered(true);
+            }
         }
     }, []);
 
@@ -64,7 +67,8 @@ const Page = () => {
             setMarkets(appData.markets);
         } else {
             const filteredProducts = appData.products.filter(
-                (product) => product.category === category
+                (product) =>
+                    product.category.toLowerCase() === category.toLowerCase()
             );
             setProducts(filteredProducts);
         }
@@ -76,6 +80,8 @@ const Page = () => {
                 options={{
                     header: () => (
                         <ExploreHeader
+                            products={products}
+                            setProducts={setProducts}
                             onCategoryChanged={handleCategoryFilter}
                         />
                     ),
@@ -84,7 +90,7 @@ const Page = () => {
             <ListingsMap listings={markets} />
             <ListingsBottomSheet
                 listings={products}
-                filter={filter}
+                isFiltered={isFiltered}
                 category={category}
             />
         </View>

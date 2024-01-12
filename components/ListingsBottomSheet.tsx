@@ -9,11 +9,11 @@ import AppText from "./AppText";
 interface Props {
     listings: any[];
     category: string;
-    filter: {};
+    isFiltered: boolean;
 }
 
 // Bottom sheet that wraps our Listings component
-const ListingsBottomSheet = ({ listings, category, filter }: Props) => {
+const ListingsBottomSheet = ({ listings, category, isFiltered }: Props) => {
     const snapPoints = useMemo(() => ["10%", "100%"], []);
     const bottomSheetRef = useRef<BottomSheet>(null);
     const [refresh, setRefresh] = useState<number>(0);
@@ -34,7 +34,7 @@ const ListingsBottomSheet = ({ listings, category, filter }: Props) => {
         >
             <View style={styles.contentContainer}>
                 {
-                    filter && (
+                    isFiltered && (
                         <View className="flex flex-row items-center justify-center mb-2 mt-1">
                             
                         <AppText textStyle="font-bold text-center">We refined your search</AppText>

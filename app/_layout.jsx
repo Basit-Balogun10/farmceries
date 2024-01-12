@@ -1,11 +1,13 @@
 import { useCallback, useEffect } from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { Link, Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts, Inter_400Regular } from "@expo-google-fonts/inter";
 import { Rubik_400Regular } from "@expo-google-fonts/rubik";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
+import { Ionicons } from '@expo/vector-icons';
+import Colors from "@/constants/Colors";
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -29,24 +31,24 @@ const tokenCache = {
 
 SplashScreen.preventAutoHideAsync();
 
-const RootLayout = () => {
-    const [fontsLoaded, fontError] = useFonts({
+export default function RootLayout() {
+    const [loaded, error] = useFonts({
         Inter: Inter_400Regular,
         Rubik: Rubik_400Regular,
     });
 
     // Expo Router uses Error Boundaries to catch errors in the navigation tree.
     useEffect(() => {
-        if (fontError) throw fontError;
-    }, [fontError]);
+        if (error) throw error;
+    }, [error]);
 
     useEffect(() => {
-        if (fontsLoaded) {
+        if (loaded) {
             SplashScreen.hideAsync();
         }
-    }, [fontsLoaded, fontError]);
+    }, [loaded, error]);
 
-    if (!fontsLoaded) {
+    if (!loaded) {
         return null;
     }
 
@@ -128,5 +130,3 @@ function RootLayoutNav() {
         </Stack>
     );
 }
-
-export default RootLayout;

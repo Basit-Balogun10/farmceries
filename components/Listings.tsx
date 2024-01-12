@@ -72,7 +72,7 @@ const Listings = ({ listings: items, refresh, category }: Props) => {
                         <Text style={{ fontSize: 16, fontFamily: "Rubik" }}>
                             {item.name}
                         </Text>
-                        <View style={{ flexDirection: "row", gap: 4 }}>
+                        <View style={{ flexDirection: "row", gap: 4, alignItems: "center" }}>
                             <Ionicons name="star" size={16} />
                             <Text style={{ fontFamily: "Rubik" }}>
                                 {item.rating}
@@ -86,7 +86,7 @@ const Listings = ({ listings: items, refresh, category }: Props) => {
                         <Text style={{ fontFamily: "Rubik" }}>
                             {item.hasPriceRange
                                 ? `₦ ${item.minPrice} - ${item.maxPrice}`
-                                : `₦ ${item.Price}`}
+                                : `₦ ${item.price}`}
                         </Text>
                     </View>
                 </Animated.View>
@@ -101,7 +101,7 @@ const Listings = ({ listings: items, refresh, category }: Props) => {
                 data={loading ? [] : items}
                 ref={listRef}
                 ListHeaderComponent={
-                    <Text style={styles.info}>{items.length} homes</Text>
+                    <Text style={styles.info}>{items.length} products</Text>
                 }
             />
         </View>

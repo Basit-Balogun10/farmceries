@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     TextInput,
 } from "react-native";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Colors from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -17,14 +17,33 @@ import appData from "@/assets/data/appData.json";
 
 interface Props {
     onCategoryChanged: (category: string) => void;
+    products: [];
+    setProducts: React.Dispatch<React.SetStateAction<[]>>;
 }
 
-const ExploreHeader = ({ onCategoryChanged }: Props) => {
+const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
     const scrollRef = useRef<ScrollView>(null);
     const itemsRef = useRef<Array<TouchableOpacity | null>>([]);
     const [activeIndex, setActiveIndex] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
-    const categories = appData.categories
+    const categories = appData.categories;
+
+    const handleSearch = (value) => {
+        setSearchTerm(value)
+        if (value === "") {
+            setProducts(products);
+        } else {
+            const filteredProducts = products.filter((product) => {
+                return (
+                    product.name.toLowerCase().includes(value.toLowerCase()) ||
+                    product.aliases.some((alias: string) =>
+                        alias.toLowerCase().includes(value.toLowerCase())
+                    )
+                );
+            });
+            setProducts(filteredProducts);
+        }
+    };
 
     const selectCategory = (index: number) => {
         const selected = itemsRef.current[index];
@@ -42,7 +61,7 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
                 <View style={styles.actionRow}>
                     <TextInput
                         style={styles.searchBtn}
-                        onChangeText={setSearchTerm}
+                        onChangeText={handleSearch}
                         value={searchTerm}
                         placeholder="Search products"
                     />

@@ -22,7 +22,6 @@ import Colors from "@/constants/Colors";
 const Page = () => {
     const [expired, setExpired] = useState(false);
     const [verified, setVerified] = useState(false);
-    const { signUp, isLoaded, setActive } = useSignUp();
     // const { startMagicLinkFlow, cancelMagicLinkFlow } =
     //     signUp?.createMagicLinkFlow();
     const [hasInitiatedMagicLink, setHasInitiatedMagicLink] = useState(false);
@@ -30,10 +29,6 @@ const Page = () => {
     const router = useRouter();
     // const redirectUrl = Linking.createURL("/");
     // console.log("Deep link: ", redirectUrl);
-
-    if (!isLoaded) {
-        return null;
-    }
 
     useWarmUpBrowser();
 
@@ -78,6 +73,7 @@ const Page = () => {
                 );
             }
         } catch (err) {
+            router.back()
             console.error("OAuth error: ", err, err.stack);
         }
     };

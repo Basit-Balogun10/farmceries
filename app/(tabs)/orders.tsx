@@ -6,16 +6,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, {
     FadeIn,
     FadeOut,
-    SlideInDown,
 } from "react-native-reanimated";
 import Colors from "@/constants/Colors";
 import { FlatList } from "react-native-gesture-handler";
+import { useRouter } from "expo-router";
 
 const AnimatedTouchableOpacity =
   Animated.createAnimatedComponent(TouchableOpacity);
 
   const Orders = () => {
-
+    const router = useRouter()
     const [orders, setOrders] = useState([]);
     const { user } = useUser();
 

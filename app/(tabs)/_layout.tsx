@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
@@ -28,8 +29,8 @@ const Layout = () => {
                 options={{
                     tabBarLabel: "Orders",
                     tabBarIcon: ({ size, color }) => (
-                        <Ionicons
-                            name="heart-outline"
+                        <Feather
+                            name="package"
                             size={size}
                             color={color}
                         />
