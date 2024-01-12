@@ -5,10 +5,16 @@ import * as Yup from "yup";
 import axios from "axios";
 import { defaultStyles } from "@/constants/Styles";
 import paymentSuccessfulAnimation from "@/assets/lottie/payment-successful.json";
+import AppText from "@/components/AppText";
 
 const payment = () => {
     const animation = useRef(null);
     const [paymentSuccessful, setPaymentSuccessful] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const params = useLocalSearchParams();
+
+    const { productId } = params
+
 
     const paymentFormValidationSchema = Yup.object().shape({
         cardNumber: Yup.string()
@@ -28,7 +34,24 @@ const payment = () => {
 
     const FSI_SANDBOX_API_KEY = process.env.EXPO_FSI_SANDBOX_API_KEY;
 
+    const addNewOrder = async () => {
+        try {
+            const response = await axios.post(
+                "https://farmceries-backend.vercel.app/api/orders",
+                {
+                    userEmail: user?.emailAddresses[0]?.emailAddress, // Replace with the actual user email
+                    productId, // Replace with the actual product ID
+                }
+            );
+
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error adding a new order:", error);
+        }
+    };
+
     const checkout = async (values) => {
+        setIsLoading(true);
         try {
             const response = await axios.post(
                 "https://fsi.ng/api/v1/flutterwave/v3/charges?type=card",
@@ -45,9 +68,13 @@ const payment = () => {
             );
 
             console.log(response.data);
+
+            await addNewOrder()
             setPaymentSuccessful(true);
         } catch (error) {
             console.error("Error completing payment:", error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -61,8 +88,12 @@ const payment = () => {
         <View className="flex-1 items-center justify-center">
             {paymentSuccessful ? (
                 <>
+                    <AppText className="text-lg font-semibold">
+                        Payment Successful
+                    </AppText>
                     <LottieView
                         autoPlay
+                        loop={true}
                         ref={animation}
                         style={{
                             width: 200,
@@ -163,6 +194,7 @@ const payment = () => {
                             <TouchableOpacity
                                 style={defaultStyles.btn}
                                 onPress={handleSubmit}
+                                disabled={isLoading}
                             >
                                 <Text style={defaultStyles.btnText}>
                                     Checkout

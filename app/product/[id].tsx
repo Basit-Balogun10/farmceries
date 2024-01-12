@@ -11,8 +11,7 @@ import {
     TextInput,
 } from "react-native";
 import * as Linking from "expo-linking";
-import * as WebBrowser from "expo-web-browser";
-import axios from "axios";
+import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import appData from "@/assets/data/appData.json";
 import Colors from "@/constants/Colors";
@@ -31,6 +30,7 @@ const IMG_HEIGHT = 300;
 
 const DetailsPage = () => {
     const { id } = useLocalSearchParams();
+    const router = useRouter();
     const product = (appData.products as any[]).find((item) => item.id === id);
     const navigation = useNavigation();
     const scrollRef = useAnimatedRef<Animated.ScrollView>();
@@ -271,7 +271,7 @@ const DetailsPage = () => {
                             disabled={
                                 product.hasPriceRange && customPrice === ""
                             }
-                            onPress={() => router.push('/(modals)/payment')}
+                            onPress={() => router.push({pathName: "/(modals)/payment", params: {productId: product.id}})}
                         >
                             <Text style={defaultStyles.btnText}>Buy Now</Text>
                         </TouchableOpacity>
