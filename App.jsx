@@ -7,6 +7,26 @@ import { useFonts, Inter_400Regular } from "@expo-google-fonts/inter";
 import { Rubik_400Regular } from "@expo-google-fonts/rubik";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+// Cache the Clerk JWT
+const tokenCache = {
+  async getToken(key) {
+    try {
+      return SecureStore.getItemAsync(key);
+    } catch (err) {
+      return null;
+    }
+  },
+  async saveToken(key, value) {
+    try {
+      return SecureStore.setItemAsync(key, value);
+    } catch (err) {
+      return;
+    }
+  },
+};
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
