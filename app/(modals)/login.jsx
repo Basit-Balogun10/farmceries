@@ -162,7 +162,7 @@ const Page = () => {
                                 className={`h-14 p-4 font-Gilroy border ${
                                     touched.email && errors.email
                                         ? "border-red-500"
-                                        : "border-secondaryColor"
+                                        : "border-green-pale"
                                 } rounded-md`}
                             />
                             {touched.email && errors.email ? (

@@ -3,12 +3,27 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { defaultStyles } from "@/constants/Styles";
+import Colors from "@/constants/Colors";
+
 
 const payment = () => {
     const [paymentSuccessful, setPaymentSuccessful] = useState(false);
 
-    const loginFormValidationSchema = Yup.object().shape({
-        email: Yup.string().email("Invalid email address").required("Required"),
+    const paymentFormValidationSchema = Yup.object().shape({
+        cardNumber: Yup.string()
+            .matches(/^[0-9]+$/, "Card number must only contain digits")
+            .min(16, "Card number must be 16 digits")
+            .max(16, "Card number must be 16 digits")
+            .required("Required"),
+        expirationDate: Yup.string()
+            .matches(/^\d{2}\/\d{2}$/, "Invalid format (mm/yy)")
+            .required("Required"),
+        cvv: Yup.string()
+            .matches(/^[0-9]+$/, "CVV must only contain digits")
+            .min(3, "CVV must be 3 digits")
+            .max(3, "CVV must be 3 digits")
+            .required("Required"),
     });
 
     const FSI_SANDBOX_API_KEY = process.env.EXPO_FSI_SANDBOX_API_KEY;
@@ -48,11 +63,13 @@ const payment = () => {
             ) : (
                 <Formik
                     initialValues={{
-                        email: "",
+                        cardNumber: "",
+                        expirationDate: "",
+                        cvv: "",
                     }}
-                    validationSchema={loginFormValidationSchema}
+                    validationSchema={paymentFormValidationSchema}
                     onSubmit={async (values, { setSubmitting }) => {
-                        checkout(values);
+                        await checkout(values);
                         setSubmitting(false);
                     }}
                 >
@@ -67,20 +84,60 @@ const payment = () => {
                         <View>
                             <View className={`mb-4`}>
                                 <TextInput
-                                    onChangeText={handleChange("email")}
-                                    onBlur={handleBlur("email")}
-                                    value={values.email}
+                                    onChangeText={handleChange("cardNumber")}
+                                    onBlur={handleBlur("cardNumber")}
+                                    value={values.cardNumber}
                                     className={`h-14 p-4 font-Gilroy border ${
-                                        touched.email && errors.email
+                                        touched.cardNumber && errors.cardNumber
                                             ? "border-red-500"
-                                            : "border-secondaryColor"
+                                            : "border-green-pale"
                                     } rounded-md tracking-wider`}
                                     placeholder="Enter your card number"
                                 />
-                                {touched.email && errors.email ? (
-                                    <AppText textStyle={`text-red-500`}>
-                                        {errors.email}
-                                    </AppText>
+                                {touched.cardNumber && errors.cardNumber ? (
+                                    <Text style={{ color: "red" }}>
+                                        {errors.cardNumber}
+                                    </Text>
+                                ) : null}
+                            </View>
+                            <View className={`mb-4`}>
+                                <TextInput
+                                    onChangeText={handleChange(
+                                        "expirationDate"
+                                    )}
+                                    onBlur={handleBlur("expirationDate")}
+                                    value={values.expirationDate}
+                                    className={`h-14 p-4 font-Gilroy border ${
+                                        touched.expirationDate &&
+                                        errors.expirationDate
+                                            ? "border-red-500"
+                                            : "border-green-pale"
+                                    } rounded-md tracking-wider`}
+                                    placeholder="Enter expiration date (mm/yy)"
+                                />
+                                {touched.expirationDate &&
+                                errors.expirationDate ? (
+                                    <Text style={{ color: "red" }}>
+                                        {errors.expirationDate}
+                                    </Text>
+                                ) : null}
+                            </View>
+                            <View className={`mb-4`}>
+                                <TextInput
+                                    onChangeText={handleChange("cvv")}
+                                    onBlur={handleBlur("cvv")}
+                                    value={values.cvv}
+                                    className={`h-14 p-4 font-Gilroy border ${
+                                        touched.cvv && errors.cvv
+                                            ? "border-red-500"
+                                            : "border-green-pale"
+                                    } rounded-md tracking-wider`}
+                                    placeholder="Enter CVV"
+                                />
+                                {touched.cvv && errors.cvv ? (
+                                    <Text style={{ color: "red" }}>
+                                        {errors.cvv}
+                                    </Text>
                                 ) : null}
                             </View>
                             <TouchableOpacity

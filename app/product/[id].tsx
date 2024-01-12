@@ -50,38 +50,38 @@ const DetailsPage = () => {
         }
     };
 
-    const getPaymentLink = async (product) => {
-        try {
-            const response = await axios.post(
-                "https://farmceries-backend.vercel.app/api/flutterwave/payment-link",
-                {
-                    amount: product.hasPriceRange ? customPrice : product.price, // Replace with the actual amount
-                    redirect_url: redirectURL,
-                    customer: {
-                        email: user?.emailAddresses[0]?.emailAddress,
-                    },
-                }
-            );
+    // const getPaymentLink = async (product) => {
+    //     try {
+    //         const response = await axios.post(
+    //             "https://farmceries-backend.vercel.app/api/flutterwave/payment-link",
+    //             {
+    //                 amount: product.hasPriceRange ? customPrice : product.price, // Replace with the actual amount
+    //                 redirect_url: redirectURL,
+    //                 customer: {
+    //                     email: user?.emailAddresses[0]?.emailAddress,
+    //                 },
+    //             }
+    //         );
 
-            console.log("Flutterwave Payment Link:", response.data);
-            return response.data;
-        } catch (error) {
-            console.error("Error getting payment link:", error);
-        }
-    };
+    //         console.log("Flutterwave Payment Link:", response.data);
+    //         return response.data;
+    //     } catch (error) {
+    //         console.error("Error getting payment link:", error);
+    //     }
+    // };
 
-    const checkout = async (product) => {
-        console.log("Checking out...");
+    // const checkout = async (product) => {
+    //     console.log("Checking out...");
 
-        if (product.hasPriceRange && customPrice === "") {
-            setPriceError(true);
-            return;
-        }
+    //     if (product.hasPriceRange && customPrice === "") {
+    //         setPriceError(true);
+    //         return;
+    //     }
 
-        const paymentLink = await getPaymentLink(product);
-        let result = WebBrowser.openBrowserAsync(paymentLink);
-        console.log("PAYMENT RESULT: ", result);
-    };
+    //     const paymentLink = await getPaymentLink(product);
+    //     let result = WebBrowser.openBrowserAsync(paymentLink);
+    //     console.log("PAYMENT RESULT: ", result);
+    // };
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -271,7 +271,7 @@ const DetailsPage = () => {
                             disabled={
                                 product.hasPriceRange && customPrice === ""
                             }
-                            onPress={() => checkout(product)}
+                            onPress={() => router.push('/(modals)/payment')}
                         >
                             <Text style={defaultStyles.btnText}>Buy Now</Text>
                         </TouchableOpacity>
