@@ -23,12 +23,13 @@ const Page = () => {
     const [expired, setExpired] = useState(false);
     const [verified, setVerified] = useState(false);
     const { signUp, isLoaded, setActive } = useSignUp();
-    const { startMagicLinkFlow, cancelMagicLinkFlow } =
-    signUp?.createEmailLinkFlow();
-    
+    // const { startMagicLinkFlow, cancelMagicLinkFlow } =
+    //     signUp?.createMagicLinkFlow();
+    const [hasInitiatedMagicLink, setHasInitiatedMagicLink] = useState(false);
+
     const router = useRouter();
-    const redirectUrl = Linking.createURL("/");
-    console.log("Deep link: ", redirectUrl);
+    // const redirectUrl = Linking.createURL("/");
+    // console.log("Deep link: ", redirectUrl);
 
     if (!isLoaded) {
         return null;
@@ -60,70 +61,73 @@ const Page = () => {
         }[strategy];
 
         try {
-            const { createdSessionId, setActive } = await selectedAuth();
-
-            console.log("creating session....");
+            console.log("creating session1....");
+            const { createdSessionId, setActive, signIn, signUp } = await selectedAuth();
+            console.log("creating session2....");
 
             if (createdSessionId) {
                 console.log("Session ID: ", createdSessionId);
                 setActive({ session: createdSessionId });
+                console.log('successful')
                 router.back();
             } else {
+                console.log('Signin object: ', signIn)
+                console.log('Signup object: ', signUp)
                 console.error(
                     "Unable to complete authentication, please check requirements"
                 );
             }
         } catch (err) {
-            console.error("OAuth error", err);
+            console.error("OAuth error: ", err, err.stack);
         }
     };
 
-    const authWithMagicLink = async (formData) => {
-        setExpired(false);
-        setVerified(false);
+    // const authWithMagicLink = async (formData) => {
+    //     setExpired(false);
+    //     setVerified(false);
 
-        // Start the sign up flow, by collecting
-        // the user's email address.
-        await signUp.create({ emailAddress: formData.email });
+    //     // Start the sign up flow, by collecting
+    //     // the user's email address.
+    //     await signUp.create({ emailAddress: formData.email });
 
-        // Start the magic link flow.
-        // Pass your app URL that users will be navigated
-        // when they click the magic link from their
-        // email inbox.
-        // su will hold the updated sign up object.
-        const updatedSignup = await startMagicLinkFlow({
-            redirectUrl,
-        });
+    //     // Start the magic link flow.
+    //     // Pass your app URL that users will be navigated
+    //     // when they click the magic link from their
+    //     // email inbox.
+    //     // su will hold the updated sign up object.
+    //     const updatedSignup = await startMagicLinkFlow({
+    //         redirectUrl,
+    //     });
 
-        // Check the verification result.
-        const verification = updatedSignup.verifications.emailAddress;
-        if (verification.verifiedFromTheSameClient()) {
-            setVerified(true);
-            // If you're handling the verification result from
-            // another route/component, you should return here.
-            // See the <MagicLinkVerification/> component as an
-            // example below.
-            // If you want to complete the flow on this tab,
-            // don't return. Check the sign up status instead.
-            // return;
-        } else if (verification.status === "expired") {
-            setExpired(true);
-        }
+    //     // Check the verification result.
+    //     const verification = updatedSignup.verifications.emailAddress;
+    //     if (verification.verifiedFromTheSameClient()) {
+    //         setVerified(true);
+    //         // If you're handling the verification result from
+    //         // another route/component, you should return here.
+    //         // See the <MagicLinkVerification/> component as an
+    //         // example below.
+    //         // If you want to complete the flow on this tab,
+    //         // don't return. Check the sign up status instead.
+    //         // return;
+    //     } else if (verification.status === "expired") {
+    //         setExpired(true);
+    //     }
 
-        if (updatedSignup.status === "complete") {
-            // Sign up is complete, we have a session.
-            // Navigate to the after sign up URL.
-            setActive({
-                session: su.createdSessionId,
-                beforeEmit: () => router.replace("/"),
-            });
-            return;
-        }
-    };
+    //     if (updatedSignup.status === "complete") {
+    //         // Sign up is complete, we have a session.
+    //         // Navigate to the after sign up URL.
+    //         setActive({
+    //             session: su.createdSessionId,
+    //             beforeEmit: () => router.replace("/(tabs)/"),
+    //         });
+    //         return;
+    //     }
+    // };
 
-    if (verified) {
-        return <AppText>Signed in on other tab</AppText>;
-    }
+    // if (verified) {
+    //     return <AppText>Signed in on other tab</AppText>;
+    // }
 
     return (
         <View style={styles.container}>
@@ -133,7 +137,7 @@ const Page = () => {
                 }}
                 validationSchema={loginFormValidationSchema}
                 onSubmit={async (values, { setSubmitting }) => {
-                    setSubmitting(true);
+                    setHasInitiatedMagicLink(true);
                     await authWithMagicLink(values);
                     setSubmitting(false);
                 }}
@@ -142,19 +146,13 @@ const Page = () => {
                     handleChange,
                     handleBlur,
                     handleSubmit,
-                    isSubmitting,
                     values,
                     touched,
                     errors,
                 }) => (
                     <View>
                         <View className={`mb-4`}>
-                            <View className={`flex-row items-center mb-1`}>
-                                <FontAwesome5
-                                    name="user"
-                                    size={13}
-                                    className={`dark:text-white/80 mr-2`}
-                                />
+                            <View className={`mb-1`}>
                                 <AppText>Email</AppText>
                             </View>
                             <TextInput
@@ -173,13 +171,13 @@ const Page = () => {
                                 </AppText>
                             ) : null}
                             {expired && (
-                                <AppText className="text-red-500">
+                                <AppText className="text-sm text-red-500">
                                     There was a problem completing your
                                     authentication - Magic link has expired
                                 </AppText>
                             )}
-                            {isSubmitting && (
-                                <AppText className="text-green-500">
+                            {hasInitiatedMagicLink && (
+                                <AppText className="text-sm text-green-500">
                                     Your Magic Link has been sent to the email
                                     provided, click on the link to complete your
                                     authentication
@@ -195,10 +193,6 @@ const Page = () => {
                     </View>
                 )}
             </Formik>
-
-            <TouchableOpacity style={defaultStyles.btn}>
-                <Text style={defaultStyles.btnText}>Continue</Text>
-            </TouchableOpacity>
 
             <View style={styles.seperatorView}>
                 <View
@@ -221,7 +215,7 @@ const Page = () => {
             <View style={{ gap: 20 }}>
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth(Strategy.Apple)}
+                    onPress={() => onSelectAuth("oauth_apple")}
                 >
                     <Ionicons
                         name="md-logo-apple"
@@ -235,7 +229,7 @@ const Page = () => {
 
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth(Strategy.Google)}
+                    onPress={() => onSelectAuth("oauth_google")}
                 >
                     <Ionicons
                         name="md-logo-google"
@@ -249,7 +243,7 @@ const Page = () => {
 
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth(Strategy.Facebook)}
+                    onPress={() => onSelectAuth("oauth_facebook")}
                 >
                     <Ionicons
                         name="md-logo-facebook"
@@ -262,7 +256,7 @@ const Page = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth(Strategy.Microsoft)}
+                    onPress={() => onSelectAuth("oauth_microsoft")}
                 >
                     <FontAwesome5
                         name="microsoft"
@@ -294,7 +288,7 @@ const styles = StyleSheet.create({
         marginVertical: 30,
     },
     seperator: {
-        fontFamily: "mon-sb",
+        fontFamily: "Rubik",
         color: Colors.grey,
         fontSize: 16,
     },
@@ -312,6 +306,6 @@ const styles = StyleSheet.create({
     btnOutlineText: {
         color: "#000",
         fontSize: 16,
-        fontFamily: "mon-sb",
+        fontFamily: "Rubik",
     },
 });

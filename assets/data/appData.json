@@ -1,0 +1,231 @@
+{
+    "markets": [
+        {
+            "id": 1,
+            "name": "Abule Oja",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [4.5244, 5.3792]
+            },
+            "location": {
+                "longitude": 4.5244,
+                "latitude": 5.3792
+            },
+            "image": "https://via.placeholder.com/150"
+        },
+        {
+            "id": 2,
+            "name": "Bariga Market",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [5.0244, 6.3792]
+            },
+            "location": {
+                "longitude": 5.0244,
+                "latitude": 6.3792
+            },
+            "image": "https://via.placeholder.com/150"
+        },
+        {
+            "id": 3,
+            "name": "Oyingbo",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [6.9244, 3.3592]
+            },
+            "location": {
+                "longitude": 6.9244,
+                "latitude": 3.3592
+            },
+            "image": "https://via.placeholder.com/150"
+        },
+        {
+            "id": 4,
+            "name": "Ojuwoye",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [6.5244, 3.3792]
+            },
+            "location": {
+                "longitude": 6.5244,
+                "latitude": 3.3792
+            },
+            "image": "https://via.placeholder.com/150"
+        },
+        {
+            "id": 5,
+            "name": "Abule Ijesha",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [5.5244, 3.4792]
+            },
+            "location": {
+                "longitude": 5.5244,
+                "latitude": 3.4792
+            },
+            "image": "https://via.placeholder.com/150"
+        }
+    ],
+    "vendors": [
+        {
+            "id": 1,
+            "name": "Farm Fresh",
+            "rating": 4.8,
+            "openingHour": "08:00",
+            "closingHour": "18:00",
+            "markets": ["Abule Oja", "Oyingbo"],
+            "image": "https://via.placeholder.com/150"
+        },
+        {
+            "id": 2,
+            "name": "The Organic Shop",
+            "rating": 4.3,
+            "openingHour": "10:00",
+            "closingHour": "20:00",
+            "markets": ["Bariga", "Mushin"],
+            "image": "https://via.placeholder.com/150"
+        }
+    ],
+    "categories": [
+        {
+            "name": "All",
+            "icon": "home"
+        },
+        {
+            "name": "Vegetables",
+            "icon": "home"
+        },
+        {
+            "name": "Fruits",
+            "icon": "house-siding"
+        },
+        {
+            "name": "Water",
+            "icon": "local-fire-department"
+        },
+        {
+            "name": "Drink",
+            "icon": "local-fire-department"
+        },
+        {
+            "name": "Flowers",
+            "icon": "videogame-asset"
+        },
+        {
+            "name": "Cereals",
+            "icon": "apartment"
+        },
+        {
+            "name": "Grains",
+            "icon": "beach-access"
+        },
+        {
+            "name": "Spices",
+            "icon": "nature-people"
+        },
+        {
+            "name": "Poultry",
+            "icon": "nature-people"
+        },
+        {
+            "name": "Pets",
+            "icon": "nature-people"
+        },
+        {
+            "name": "Livestock",
+            "icon": "nature-people"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Fresh Carrots",
+            "image": "https://via.placeholder.com/150",
+            "shortDesc": "Nutritious organic carrots",
+            "longDesc": "",
+            "dateCreated": "2024-01-05T00:00:00.000Z",
+            "rating": 4.5,
+            "reviewsCount": 24,
+            "availabilityCount": 83,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 2500,
+            "maxPrice": 5000,
+            "shelfLife": "1 week",
+            "vendor": "The Organic Shop",
+            "category": "Vegetables"
+        },
+        {
+            "id": 2,
+            "name": "Oranges",
+            "image": "https://via.placeholder.com/150",
+            "shortDesc": "Sweet oranges freshly picked",
+            "longDesc": "",
+            "dateCreated": "2024-01-05T00:00:00.000Z",
+            "rating": 4.2,
+            "reviewsCount": 50,
+            "availabilityCount": 152,
+            "price": 2500,
+            "hasPriceRange": false,
+            "minPrice": null,
+            "maxPrice": null,
+            "shelfLife": "1 week",
+            "vendor": "Farm fresh",
+            "category": "Fruits"
+        },
+        {
+            "id": 3,
+            "name": "Fresh Carrots",
+            "image": "https://via.placeholder.com/150",
+            "shortDesc": "Nutritious organic carrots",
+            "longDesc": "",
+            "dateCreated": "2024-01-05T00:00:00.000Z",
+            "rating": 4.5,
+            "reviewsCount": 24,
+            "availabilityCount": 83,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 2500,
+            "maxPrice": 5000,
+            "shelfLife": "1 week",
+            "vendor": "The Organic Shop",
+            "category": "Vegetables"
+        },
+        {
+            "id": 4,
+            "name": "Oranges",
+            "image": "https://via.placeholder.com/150",
+            "shortDesc": "Sweet oranges freshly picked",
+            "longDesc": "",
+            "dateCreated": "2024-01-05T00:00:00.000Z",
+            "rating": 4.2,
+            "reviewsCount": 50,
+            "availabilityCount": 152,
+            "price": 2500,
+            "hasPriceRange": false,
+            "minPrice": null,
+            "maxPrice": null,
+            "shelfLife": "1 week",
+            "vendor": "Farm fresh",
+            "category": "Fruits"
+        },
+        {
+            "id": 5,
+            "name": "Fresh Carrots",
+            "image": "https://via.placeholder.com/150",
+            "shortDesc": "Nutritious organic carrots",
+            "longDesc": "",
+            "dateCreated": "2024-01-05T00:00:00.000Z",
+            "rating": 4.5,
+            "reviewsCount": 24,
+            "availabilityCount": 83,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 2500,
+            "maxPrice": 5000,
+            "shelfLife": "1 week",
+            "vendor": "The Organic Shop",
+            "category": "Vegetables"
+        }
+    ]
+}
