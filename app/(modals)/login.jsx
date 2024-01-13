@@ -25,6 +25,7 @@ const Page = () => {
     // const { startMagicLinkFlow, cancelMagicLinkFlow } =
     //     signUp?.createMagicLinkFlow();
     const [hasInitiatedMagicLink, setHasInitiatedMagicLink] = useState(false);
+    const [allDisabled, setAllDisabled] = useState(false);
 
     const router = useRouter();
     // const redirectUrl = Linking.createURL("/");
@@ -57,24 +58,25 @@ const Page = () => {
 
         try {
             console.log("creating session1....");
-            const { createdSessionId, setActive, signIn, signUp } = await selectedAuth();
+            const { createdSessionId, setActive, signIn, signUp } =
+                await selectedAuth();
             console.log("creating session2....");
 
             if (createdSessionId) {
                 console.log("Session ID: ", createdSessionId);
                 setActive({ session: createdSessionId });
-                console.log('successful')
+                console.log("successful");
                 router.back();
             } else {
-                console.log('Signin object: ', signIn)
-                console.log('Signup object: ', signUp)
-                console.error(
+                console.log("Signin object: ", signIn);
+                console.log("Signup object: ", signUp);
+                console.log(
                     "Unable to complete authentication, please check requirements"
                 );
             }
         } catch (err) {
-            router.back()
-            console.error("OAuth error: ", err, err.stack);
+            router.back();
+            console.log("OAuth error: ", err, err.stack);
         }
     };
 
@@ -211,7 +213,12 @@ const Page = () => {
             <View style={{ gap: 20 }}>
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth("oauth_apple")}
+                    className={`${allDisabled ? "opacity-50" : ""}`}
+                    disabled={allDisabled}
+                    onPress={() => {
+                        setAllDisabled(true);
+                        onSelectAuth("oauth_apple");
+                    }}
                 >
                     <Ionicons
                         name="md-logo-apple"
@@ -225,7 +232,12 @@ const Page = () => {
 
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth("oauth_google")}
+                    className={`${allDisabled ? "opacity-50" : ""}`}
+                    disabled={allDisabled}
+                    onPress={() => {
+                        setAllDisabled(true);
+                        onSelectAuth("oauth_google");
+                    }}
                 >
                     <Ionicons
                         name="md-logo-google"
@@ -239,7 +251,12 @@ const Page = () => {
 
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth("oauth_facebook")}
+                    className={`${allDisabled ? "opacity-50" : ""}`}
+                    disabled={allDisabled}
+                    onPress={() => {
+                        setAllDisabled(true);
+                        onSelectAuth("oauth_faceboook");
+                    }}
                 >
                     <Ionicons
                         name="md-logo-facebook"
@@ -252,7 +269,12 @@ const Page = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.btnOutline}
-                    onPress={() => onSelectAuth("oauth_microsoft")}
+                    className={`${allDisabled ? "opacity-50" : ""}`}
+                    disabled={allDisabled}
+                    onPress={() => {
+                        setAllDisabled(true);
+                        onSelectAuth("oauth_microsoft");
+                    }}
                 >
                     <FontAwesome5
                         name="microsoft"

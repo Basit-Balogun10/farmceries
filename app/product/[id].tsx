@@ -210,26 +210,28 @@ const DetailsPage = () => {
                             style={styles.host}
                         />
 
-                        <View>
-                            <Text style={{ fontWeight: "500", fontSize: 16 }}>
-                                Posted by {product.vendor.name}
-                            </Text>
-                            <View className="flex flex-row items-center">
+                        <View className="flex flex-1 flex-row items-center justify-between">
+                            <View className="">
+                                <Text
+                                    style={{ fontWeight: "500", fontSize: 16 }}
+                                >
+                                    Uploaded by {product.vendor.name}
+                                </Text>
                                 <View className="flex flex-row">
-                                    <Ionicons name="star" size={16} />
-                                    <Text className="font-[Rubik] ml-2">
-                                        {product.vendor.rating}
-                                    </Text>
-                                </View>
-                                <View className="flex flex-row ml-4">
                                     <Text className="font-[Rubik]">
                                         Opening Hours:
                                     </Text>
                                     <Text className="font-[Rubik] ml-2">
-                                        {product.vendor.openHour} -{" "}
+                                        {product.vendor.openingHour} -{" "}
                                         {product.vendor.closingHour}
                                     </Text>
                                 </View>
+                            </View>
+                            <View className="flex flex-row items-center ml-4">
+                                <Ionicons name="star" size={16} />
+                                <Text className="font-[Rubik] ml-2">
+                                    {product.vendor.rating}
+                                </Text>
                             </View>
                         </View>
 

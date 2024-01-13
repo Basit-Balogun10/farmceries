@@ -5,65 +5,143 @@
             "name": "Abule Oja",
             "geometry": {
                 "type": "Point",
-                "coordinates": [4.5244, 5.3792]
+                "coordinates": [3.5244, 6.3792]
             },
             "location": {
-                "longitude": 4.5244,
-                "latitude": 5.3792
+                "longitude": 3.5244,
+                "latitude": 6.3792
             },
-            "image": "https://via.placeholder.com/150"
+            "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
             "id": 2,
             "name": "Bariga Market",
             "geometry": {
                 "type": "Point",
-                "coordinates": [5.0244, 6.3792]
+                "coordinates": [3.0244, 6.3792]
             },
             "location": {
-                "longitude": 5.0244,
+                "longitude": 3.0244,
                 "latitude": 6.3792
             },
-            "image": "https://via.placeholder.com/150"
+            "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
             "id": 3,
             "name": "Oyingbo",
             "geometry": {
                 "type": "Point",
-                "coordinates": [6.9244, 3.3592]
+                "coordinates": [3.9244, 6.3592]
             },
             "location": {
-                "longitude": 6.9244,
-                "latitude": 3.3592
+                "longitude": 3.9244,
+                "latitude": 6.3592
             },
-            "image": "https://via.placeholder.com/150"
+            "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
             "id": 4,
             "name": "Ojuwoye",
             "geometry": {
                 "type": "Point",
-                "coordinates": [6.5244, 3.3792]
+                "coordinates": [3.5244, 6.3792]
             },
             "location": {
-                "longitude": 6.5244,
-                "latitude": 3.3792
+                "longitude": 3.5244,
+                "latitude": 6.3792
             },
-            "image": "https://via.placeholder.com/150"
+            "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
             "id": 5,
+            "name": "Tejuosho",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [3.5244, 6.5792]
+            },
+            "location": {
+                "longitude": 3.5244,
+                "latitude": 6.5792
+            },
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 6,
+            "name": "Idumota",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [3.6244, 6.3792]
+            },
+            "location": {
+                "longitude": 3.6244,
+                "latitude": 6.3792
+            },
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 7,
+            "name": "Mile-12",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [3.3244, 6.3792]
+            },
+            "location": {
+                "longitude": 3.3244,
+                "latitude": 6.3792
+            },
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 8,
+            "name": "Eko Market",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [3.4244, 6.2792]
+            },
+            "location": {
+                "longitude": 3.4244,
+                "latitude": 6.2792
+            },
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 9,
+            "name": "Oshodi Market",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [3.1244, 6.4892]
+            },
+            "location": {
+                "longitude": 3.1244,
+                "latitude": 6.4892
+            },
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 10,
+            "name": "Kara Market",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [3.7244, 6.4332]
+            },
+            "location": {
+                "longitude": 3.7244,
+                "latitude": 6.4332
+            },
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 11,
             "name": "Abule Ijesha",
             "geometry": {
                 "type": "Point",
-                "coordinates": [5.5244, 3.4792]
+                "coordinates": [3.5244, 6.4792]
             },
             "location": {
-                "longitude": 5.5244,
-                "latitude": 3.4792
+                "longitude": 3.5244,
+                "latitude": 6.4792
             },
-            "image": "https://via.placeholder.com/150"
+            "image": "https://picsum.photos/seed/696/3000/2000"
         }
     ],
     "vendors": [
@@ -74,7 +152,7 @@
             "openingHour": "08:00",
             "closingHour": "18:00",
             "markets": ["Abule Oja", "Oyingbo"],
-            "image": "https://via.placeholder.com/150"
+            "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
             "id": 2,
@@ -82,8 +160,134 @@
             "rating": 4.3,
             "openingHour": "10:00",
             "closingHour": "20:00",
-            "markets": ["Bariga", "Mushin"],
-            "image": "https://via.placeholder.com/150"
+            "markets": ["Bariga Market", "Ojuwoye"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 2,
+            "name": "Organic Baskets",
+            "rating": 4.5,
+            "openingHour": "07:00",
+            "closingHour": "19:00",
+            "markets": ["Bariga", "Idumota"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 3,
+            "name": "The Vegetable Shop",
+            "rating": 4.3,
+            "openingHour": "10:00",
+            "closingHour": "20:00",
+            "markets": ["Oyingbo", "Tejuosho"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 4,
+            "name": "Fruit Lane",
+            "rating": 4.7,
+            "openingHour": "09:00",
+            "closingHour": "19:00",
+            "markets": ["Mushin", "Abule Oja"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 5,
+            "name": "Meat Delight",
+            "rating": 4.2,
+            "openingHour": "08:30",
+            "closingHour": "18:30",
+            "markets": ["Mile-12", "Idumota"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 6,
+            "name": "Dairy Farmers",
+            "rating": 4.5,
+            "openingHour": "08:00",
+            "closingHour": "20:00",
+            "markets": ["Oshodi Market", "Kara Market"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 7,
+            "name": "Fisherman's Choice",
+            "rating": 4.6,
+            "openingHour": "07:00",
+            "closingHour": "15:00",
+            "markets": ["Eko Market", "Kara Market"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 8,
+            "name": "Spice World",
+            "rating": 4.4,
+            "openingHour": "10:00",
+            "closingHour": "19:00",
+            "markets": ["Tejuosho", "Bariga"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 9,
+            "name": "Green Thumbs",
+            "rating": 4.0,
+            "openingHour": "11:00",
+            "closingHour": "20:00",
+            "markets": ["Oyingbo", "Tejuosho"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 10,
+            "name": "Gourmet Delight",
+            "rating": 4.3,
+            "openingHour": "12:00",
+            "closingHour": "22:00",
+            "markets": ["Oshodi Market", "Kara Market"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 11,
+            "name": "Poultry Farm",
+            "rating": 4.1,
+            "openingHour": "07:00",
+            "closingHour": "14:00",
+            "markets": ["Mushin", "Mile-12"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 12,
+            "name": "Organic Orchard",
+            "rating": 4.7,
+            "openingHour": "10:00",
+            "closingHour": "18:00",
+            "markets": ["Abule Oja", "Bariga"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 13,
+            "name": "Flower Avenue",
+            "rating": 4.5,
+            "openingHour": "09:00",
+            "closingHour": "17:00",
+            "markets": ["Idumota", "Tejuosho"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 14,
+            "name": "Petals & Greens",
+            "rating": 4.2,
+            "openingHour": "06:00",
+            "closingHour": "16:00",
+            "markets": ["Oshodi Market", "Oyingbo"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
+        },
+        {
+            "id": 15,
+            "name": "Pure Honey",
+            "rating": 4.9,
+            "openingHour": "12:00",
+            "closingHour": "22:00",
+            "markets": ["Eko Market", "Kara Market"],
+            "image": "https://picsum.photos/seed/696/3000/2000"
         }
     ],
     "categories": [
@@ -134,6 +338,10 @@
         {
             "name": "Livestock",
             "icon": "cow"
+        },
+        {
+            "name": "Honey",
+            "icon": "bee"
         }
     ],
     "products": [
@@ -153,14 +361,22 @@
             "minPrice": 2500,
             "maxPrice": 5000,
             "shelfLife": "1 week",
-            "vendor": "The Organic Shop",
+            "vendor": {
+                "id": 1,
+                "name": "The Organic Shop",
+                "rating": 4.5,
+                "openingHour": "10:00",
+                "closingHour": "20:00",
+                "markets": ["Bariga Market", "Ojuwoye"],
+                "image": "https://picsum.photos/seed/696/3000/2000"
+            },
             "category": "Vegetables"
         },
         {
             "id": 2,
             "name": "Oranges",
             "aliases": ["Osan"],
-            "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.britannica.com%2F24%2F174524-050-A851D3F2%2FOranges.jpg&tbnid=DNiiMzJasQssuM&vet=12ahUKEwjqsuih6diDAxWMmicCHU6OD9UQMygCegQIARB4..i&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Fplant%2Forange-fruit&docid=U86k1P7L5gTu1M&w=1600&h=1064&q=orange%20images&ved=2ahUKEwjqsuih6diDAxWMmicCHU6OD9UQMygCegQIARB4",
+            "image": "https://images.freeimages.com/images/large-previews/de0/oranges-1329180.jpg?fmt=webp&w=500",
             "shortDesc": "Sweet oranges freshly picked",
             "longDesc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolorem voluptatibus inventore, voluptatem quia sunt repellat tempore asperiores illum alias ut voluptates aliquid eius quis consequuntur labore rem modi reiciendis.",
             "dateCreated": "2024-01-05T00:00:00.000Z",
@@ -172,65 +388,502 @@
             "minPrice": null,
             "maxPrice": null,
             "shelfLife": "1 week",
-            "vendor": "Farm fresh",
+            "vendor": {
+                "id": 2,
+                "name": "Farm Fresh",
+                "rating": 4.2,
+                "openingHour": "08:00",
+                "closingHour": "18:00",
+                "markets": ["Abule Oja", "Oyingbo"],
+                "image": "https://picsum.photos/seed/696/3000/2000"
+            },
             "category": "Fruits"
         },
         {
-            "id": 3,
-            "name": "Fresh Carrots",
-            "aliases": [""],
-            "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1598170845058-32b9d6a5da37%3Fq%3D80%26w%3D1000%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fycm90fGVufDB8fDB8fHww&tbnid=QJaCEyC62SA6HM&vet=12ahUKEwibzqe66diDAxVnpycCHRTbCB0QMygCegQIARB4..i&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fcarrot&docid=6bud9zds7liseM&w=1000&h=1500&q=carrot%20images&ved=2ahUKEwibzqe66diDAxVnpycCHRTbCB0QMygCegQIARB4",
-            "shortDesc": "Nutritious organic carrots",
-            "longDesc": "",
+            "id": 51,
+            "name": "Organic Tomatoes",
+            "aliases": ["Tomaytoes", "Red Delight", "Timat"],
+            "image": "https://media.istockphoto.com/id/171589415/photo/tomatoes.webp?b=1&s=612x612&w=0&k=20&c=DSahU8q12gykU8Rwo1R9ZQ9uClqjDfeEzvZ-7V_90yo=",
+            "shortDesc": "Juicy and flavorful organic tomatoes",
+            "longDesc": "Discover the essence of freshness with our organic tomatoes. Grown with care and precision, these juicy delights will add a burst of flavor to your salads, sandwiches, and recipes. Experience the true taste of nature!",
+            "dateCreated": "2024-01-10T08:30:00.000Z",
+            "rating": 4.7,
+            "reviewsCount": 32,
+            "availabilityCount": 95,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 3000,
+            "maxPrice": 6000,
+            "shelfLife": "1 week",
+            "vendor": {
+                "id": 3,
+                "name": "The Vegetable Shop",
+                "rating": 4.3,
+                "openingHour": "10:00",
+                "closingHour": "20:00",
+                "markets": ["Oyingbo", "Tejuosho"],
+                "image": "https://example.com/vegetable-shop.jpg"
+            },
+            "category": "Vegetables"
+        },
+        {
+            "id": 52,
+            "name": "Golden Apples",
+            "aliases": ["Yellow Apples", "Sweet Crunch"],
+            "image": "https://media.istockphoto.com/id/184927564/photo/close-up-of-red-royal-gala-apples.webp?b=1&s=612x612&w=0&k=20&c=DQdaQpwSj3_DcE35_xyTvvxyIoPon5qbV6iU4V7XidE=",
+            "shortDesc": "Sweet and crispy golden apples",
+            "longDesc": "Indulge in the sweetness of our golden apples. These crisp and flavorful delights are perfect for snacking, baking, or adding a refreshing touch to your fruit salads. Experience the joy of biting into the perfect apple!",
+            "dateCreated": "2024-01-10T09:15:00.000Z",
+            "rating": 4.5,
+            "reviewsCount": 28,
+            "availabilityCount": 80,
+            "hasPriceRange": false,
+            "minPrice": null,
+            "maxPrice": null,
+            "price": 2500,
+            "shelfLife": "2 weeks",
+            "vendor": {
+                "id": 4,
+                "name": "Fruit Lane",
+                "rating": 4.7,
+                "openingHour": "09:00",
+                "closingHour": "19:00",
+                "markets": ["Mushin", "Abule Oja"],
+                "image": "https://example.com/fruit-lane.jpg"
+            },
+            "category": "Fruits"
+        },
+        {
+            "id": 100,
+            "name": "Organic Eggs",
+            "aliases": ["Farm Eggs", "Free-Range Eggs"],
+            "image": "https://images.freeimages.com/images/large-previews/d58/eggs-1561798.jpg?fmt=webp&w=500",
+            "shortDesc": "Farm-fresh organic eggs",
+            "longDesc": "Start your day with the goodness of farm-fresh organic eggs. Packed with nutrients and flavor, our eggs are sourced from free-range hens, ensuring the highest quality for your breakfast and culinary creations.",
+            "dateCreated": "2024-01-10T18:45:00.000Z",
+            "rating": 4.6,
+            "reviewsCount": 36,
+            "availabilityCount": 70,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 800,
+            "maxPrice": 1200,
+            "shelfLife": "3 weeks",
+            "vendor": {
+                "id": 5,
+                "name": "Meat Delight",
+                "rating": 4.2,
+                "openingHour": "08:30",
+                "closingHour": "18:30",
+                "markets": ["Mile-12", "Idumota"],
+                "image": "https://example.com/meat-delight.jpg"
+            },
+            "category": "Poultry"
+        },
+        {
+            "id": 53,
+            "name": "Refreshing Coconut Water",
+            "aliases": ["Coconut Drink", "Natural Hydration"],
+            "image": "https://media.istockphoto.com/id/1197683398/photo/image-of-glass-of-coconut-water-coconuts-and-palm-leaf.webp?b=1&s=612x612&w=0&k=20&c=Kp-sofA07q7BWx5Ypz-kFlZNWF9xVujsjuDyuV-K3pQ=",
+            "shortDesc": "Pure and refreshing coconut water",
+            "longDesc": "Quench your thirst with the pure essence of coconut water. Sourced from the finest coconuts, our refreshing drink is a natural hydrator packed with electrolytes. Experience the tropical delight in every sip!",
+            "dateCreated": "2024-01-10T10:00:00.000Z",
+            "rating": 4.4,
+            "reviewsCount": 25,
+            "availabilityCount": 90,
+            "hasPriceRange": false,
+            "minPrice": null,
+            "maxPrice": null,
+            "price": 1500,
+            "shelfLife": "2 weeks",
+            "vendor": {
+                "id": 3,
+                "name": "The Vegetable Shop",
+                "rating": 4.3,
+                "openingHour": "10:00",
+                "closingHour": "20:00",
+                "markets": ["Oyingbo", "Tejuosho"],
+                "image": "https://example.com/vegetable-shop.jpg"
+            },
+            "category": "Water"
+        },
+        {
+            "id": 54,
+            "name": "Sparkling Elderflower Tonic",
+            "aliases": ["Elderflower Drink", "Fizzy Elixir"],
+            "image": "https://media.istockphoto.com/id/1419243456/photo/bunch-of-elderberries-with-ripe-berries.webp?b=1&s=612x612&w=0&k=20&c=mvPW6RUpDsnxek9yoxAff1ET1ZciBxH7qtzCj_s5GiQ=",
+            "shortDesc": "A sparkling blend of elderflower goodness",
+            "longDesc": "Indulge in the effervescence of our sparkling elderflower tonic. Crafted with care, this delightful drink offers a perfect balance of sweetness and floral notes. Elevate your beverage experience with every sip!",
+            "dateCreated": "2024-01-10T10:45:00.000Z",
+            "rating": 4.6,
+            "reviewsCount": 30,
+            "availabilityCount": 85,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 2000,
+            "maxPrice": 3500,
+            "shelfLife": "3 weeks",
+            "vendor": {
+                "id": 8,
+                "name": "Spice World",
+                "rating": 4.4,
+                "openingHour": "10:00",
+                "closingHour": "19:00",
+                "markets": ["Tejuosho", "Bariga"],
+                "image": "https://example.com/spice-world.jpg"
+            },
+            "category": "Drink"
+        },
+        {
+            "id": 5,
+            "name": "Pepper",
+            "aliases": ["Ata Rodo", "Ose", "Barkono"],
+            "image": "https://images.freeimages.com/images/large-previews/356/pepper-and-vegetables-5-1322863.jpg?fmt=webp&w=500",
+            "shortDesc": "Freshly harvested pepper",
+            "longDesc": "Spice up your culinary creations with our premium peppers! Packed with robust flavor and a hint of heat, our carefully selected peppers add depth and excitement to any dish. Elevate your cooking experience with the finest quality peppers available.",
             "dateCreated": "2024-01-05T00:00:00.000Z",
             "rating": 4.5,
             "reviewsCount": 24,
             "availabilityCount": 83,
             "hasPriceRange": true,
             "price": null,
-            "minPrice": 2500,
-            "maxPrice": 5000,
-            "shelfLife": "1 week",
-            "vendor": "The Organic Shop",
-            "category": "Vegetables"
-        },
-        {
-            "id": 4,
-            "name": "Oranges",
-            "aliases": [""],
-            "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.britannica.com%2F24%2F174524-050-A851D3F2%2FOranges.jpg&tbnid=DNiiMzJasQssuM&vet=12ahUKEwjqsuih6diDAxWMmicCHU6OD9UQMygCegQIARB4..i&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Fplant%2Forange-fruit&docid=U86k1P7L5gTu1M&w=1600&h=1064&q=orange%20images&ved=2ahUKEwjqsuih6diDAxWMmicCHU6OD9UQMygCegQIARB4",
-            "shortDesc": "Sweet oranges freshly picked",
-            "longDesc": "",
-            "dateCreated": "2024-01-05T00:00:00.000Z",
-            "rating": 4.2,
-            "reviewsCount": 50,
-            "availabilityCount": 152,
-            "price": 2500,
-            "hasPriceRange": false,
-            "minPrice": null,
-            "maxPrice": null,
-            "shelfLife": "1 week",
-            "vendor": "Farm fresh",
-            "category": "Fruits"
-        },
-        {
-            "id": 5,
-            "name": "Pepper",
-            "aliases": ["Ata Rodo", "Ose", "Barkono"],
-            "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1567539549213-cc1697632146%3Fq%3D80%26w%3D1000%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpbGklMjBwZXBwZXJ8ZW58MHx8MHx8fDA%253D&tbnid=H-qR1k6hweEAfM&vet=12ahUKEwjjqviK6diDAxW4AfsDHUY0AKAQMygGegUIARCCAQ..i&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fchili-pepper&docid=ww3vSLc9F_6NhM&w=1000&h=1500&q=pepper%20images&ved=2ahUKEwjjqviK6diDAxW4AfsDHUY0AKAQMygGegUIARCCAQ",
-            "shortDesc": "Freshly harvested peppers",
-            "longDesc": "Spice up your culinary creations with our premium peppers! Packed with robust flavor and a hint of heat, our carefully selected peppers add depth and excitement to any dish. Elevate your cooking experience with the finest quality peppers available.",
-            "dateCreated": "2024-01-05T00:00:00.000Z",
-            "rating": 4.5,
-            "reviewsCount": 24,
-            "availabilityCount": 83,    
-            "hasPriceRange": true,
-            "price": null,
             "minPrice": 200,
             "maxPrice": 5000,
             "shelfLife": "1 week",
-            "vendor": "The Organic Shop",
-            "category": "Spices"
+            "vendor": {
+                "id": 2,
+                "name": "Farm Fresh",
+                "rating": 4.2,
+                "openingHour": "08:00",
+                "closingHour": "18:00",
+                "markets": ["Abule Oja", "Oyingbo"],
+                "image": "https://picsum.photos/seed/696/3000/2000"
+            },
+            "category": "Fruits"
+        },
+        {
+            "id": 55,
+            "name": "Exotic Orchid Bouquet",
+            "aliases": ["Orchid Flowers", "Luxury Bloom"],
+            "image": "https://media.istockphoto.com/id/1471967140/photo/pink-orchid-in-a-pot.webp?b=1&s=612x612&w=0&k=20&c=u-J5otuqiZicHTtd1PoOM0tEG14NPgsZO6SrvYCfh1Q=",
+            "shortDesc": "Elegance in a bouquet - exotic orchids",
+            "longDesc": "Embrace the beauty of our exotic orchid bouquet. Each bloom is a symbol of elegance and luxury, making it a perfect gift or centerpiece for special occasions. Elevate your surroundings with these exquisite flowers!",
+            "dateCreated": "2024-01-10T11:30:00.000Z",
+            "rating": 4.8,
+            "reviewsCount": 40,
+            "availabilityCount": 75,
+            "hasPriceRange": false,
+            "price": 5000,
+            "maxPrice": null,
+            "minPrice": null,
+            "shelfLife": "2 weeks",
+            "vendor": {
+                "id": 13,
+                "name": "Flower Avenue",
+                "rating": 4.5,
+                "openingHour": "09:00",
+                "closingHour": "17:00",
+                "markets": ["Idumota", "Tejuosho"],
+                "image": "https://example.com/flower-avenue.jpg"
+            },
+            "category": "Flowers"
+        },
+        {
+            "id": 301,
+            "name": "Golden Honeycomb",
+            "aliases": ["Pure Honeycomb", "Honey Delight"],
+            "image": "https://media.istockphoto.com/id/1408532778/photo/macro-photo-of-working-bees-on-honeycombs-beekeeping-and-honey-production-image.webp?b=1&s=612x612&w=0&k=20&c=haLqrTd7_PvryDaMBWQzCMlTq3FA2E3XKSF-sknzmFg=",
+            "shortDesc": "Indulge in the sweetness of golden honeycomb",
+            "longDesc": "Savor the rich sweetness of our golden honeycomb. Harvested from pristine beehives, this natural delight is a testament to the pure essence of honey. Elevate your culinary experiences with this golden nectar!",
+            "dateCreated": "2024-01-10T19:30:00.000Z",
+            "rating": 4.9,
+            "reviewsCount": 45,
+            "availabilityCount": 65,
+            "hasPriceRange": false,
+            "price": 2500,
+            "maxPrice": null,
+            "minPrice": null,
+            "shelfLife": "4 weeks",
+            "vendor": {
+                "id": 15,
+                "name": "Pure Honey",
+                "rating": 4.9,
+                "openingHour": "12:00",
+                "closingHour": "22:00",
+                "markets": ["Eko Market", "Kara Market"],
+                "image": "https://example.com/pure-honey.jpg"
+            },
+            "category": "Honey"
+        },
+        {
+            "id": 102,
+            "name": "Aromatic Basmati Rice",
+            "aliases": ["Premium Basmati", "Fragrant Rice"],
+            "image": "https://media.istockphoto.com/id/175586192/photo/basmati-rice.webp?b=1&s=612x612&w=0&k=20&c=QqaRMxoD_7nig3m4VP4vk-vQ2MYwADwudw9OcfRKKRg=",
+            "shortDesc": "The aroma and taste of premium basmati rice",
+            "longDesc": "Experience the allure of our aromatic basmati rice. Grown in fertile regions, this premium rice variety boasts a delightful fragrance and exquisite taste. Elevate your meals with the finest quality basmati rice!",
+            "dateCreated": "2024-01-10T20:15:00.000Z",
+            "rating": 4.7,
+            "reviewsCount": 38,
+            "availabilityCount": 80,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 1000,
+            "maxPrice": 2500,
+            "shelfLife": "6 weeks",
+            "vendor": {
+                "id": 14,
+                "name": "Petals & Greens",
+                "rating": 4.2,
+                "openingHour": "06:00",
+                "closingHour": "16:00",
+                "markets": ["Oshodi Market", "Oyingbo"],
+                "image": "https://example.com/petals-and-greens.jpg"
+            },
+            "category": "Grains"
+        },
+        {
+            "id": 150,
+            "name": "Succulent Chicken Breast",
+            "aliases": ["Boneless Chicken", "Tender Fillet"],
+            "image": "https://media.istockphoto.com/id/1397056354/photo/raw-chicken-breast-or-fillet-with-salt-pepper-and-fresh-herbs-on-a-white-plate-on-a-gray.webp?b=1&s=612x612&w=0&k=20&c=C27nqq8VWLTs_Ea5z1whJoPmp6sEc7e1B2f6qDBSXnc=",
+            "shortDesc": "Tender and succulent chicken breast fillet",
+            "longDesc": "Elevate your culinary creations with our succulent chicken breast fillet. Boneless and tender, this premium cut is perfect for grilling, roasting, or stir-frying. Unleash your inner chef with the finest chicken fillet!",
+            "dateCreated": "2024-01-11T10:00:00.000Z",
+            "rating": 4.6,
+            "reviewsCount": 42,
+            "availabilityCount": 60,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 1500,
+            "maxPrice": 3000,
+            "shelfLife": "5 days",
+            "vendor": {
+                "id": 11,
+                "name": "Poultry Farm",
+                "rating": 4.1,
+                "openingHour": "07:00",
+                "closingHour": "14:00",
+                "markets": ["Mushin", "Mile-12"],
+                "image": "https://example.com/poultry-farm.jpg"
+            },
+            "category": "Poultry"
+        },
+        {
+            "id": 151,
+            "name": "Choco Bliss Cereal",
+            "aliases": ["Chocolate Cereal", "Cocoa Crunch"],
+            "image": "https://media.istockphoto.com/id/1268947834/photo/groats-in-bags.webp?b=1&s=612x612&w=0&k=20&c=3KTSK8i0xe5I3b_8XGEn-H5JgkzozULpXggnx9gOoWo=",
+            "shortDesc": "Indulge in the bliss of chocolate-flavored cereal",
+            "longDesc": "Start your day with the heavenly taste of our Choco Bliss Cereal. Made with premium cocoa, this cereal delivers a rich and satisfying chocolate flavor in every bite. Experience breakfast bliss with our delightful chocolate cereal!",
+            "dateCreated": "2024-01-11T12:30:00.000Z",
+            "rating": 4.5,
+            "reviewsCount": 28,
+            "availabilityCount": 75,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 800,
+            "maxPrice": 1500,
+            "shelfLife": "8 weeks",
+            "vendor": {
+                "id": 8,
+                "name": "Spice World",
+                "rating": 4.4,
+                "openingHour": "10:00",
+                "closingHour": "19:00",
+                "markets": ["Tejuosho", "Bariga"],
+                "image": "https://example.com/spice-world.jpg"
+            },
+            "category": "Cereals"
+        },
+        {
+            "id": 152,
+            "name": "Classic Rose Bouquet",
+            "aliases": ["Red Roses", "Romantic Bouquet"],
+            "image": "https://media.istockphoto.com/id/1447358317/photo/beautiful-bunch-of-summer-red-flowers-in-a-vase.webp?b=1&s=612x612&w=0&k=20&c=SppespAb9cboJ1kSx-Sdwbz7-Eo6q1gu3x32TasSF0Y=",
+            "shortDesc": "Express your love with our classic rose bouquet",
+            "longDesc": "Surprise your loved ones with the timeless elegance of our Classic Rose Bouquet. These fresh and vibrant red roses are carefully arranged to create a stunning expression of love and admiration. Make every moment special with our romantic rose bouquet!",
+            "dateCreated": "2024-01-11T14:00:00.000Z",
+            "rating": 4.8,
+            "reviewsCount": 35,
+            "availabilityCount": 50,
+            "hasPriceRange": false,
+            "price": 5000,
+            "maxPrice": null,
+            "minPrice": null,
+            "shelfLife": "7 days",
+            "vendor": {
+                "id": 13,
+                "name": "Flower Avenue",
+                "rating": 4.5,
+                "openingHour": "09:00",
+                "closingHour": "17:00",
+                "markets": ["Idumota", "Tejuosho"],
+                "image": "https://example.com/flower-avenue.jpg"
+            },
+            "category": "Flowers"
+        },
+        {
+            "id": 153,
+            "name": "Premium Cow Milk",
+            "aliases": ["Rich Cow's Milk", "Creamy Caprine Delight"],
+            "image": "https://media.istockphoto.com/id/1290847185/photo/woman-hands-milking-a-goat-in-the-meadow.webp?b=1&s=612x612&w=0&k=20&c=ARYQBGi0hKGnTLFkA9xpA1lOQ1rfBb6SIcC2m4yzB6I=",
+            "shortDesc": "Experience the richness of premium goat milk",
+            "longDesc": "Indulge in the velvety goodness of our Premium Cow Milk. Sourced from well-nurtured cows, this milk is known for its rich, creamy texture and high nutritional value. Elevate your daily intake with the wholesome goodness of premium cow's milk!",
+            "dateCreated": "2024-01-11T15:45:00.000Z",
+            "rating": 4.7,
+            "reviewsCount": 42,
+            "availabilityCount": 60,
+            "hasPriceRange": false,
+            "price": 7250,
+            "minPrice": null,
+            "maxPrice": null,
+            "shelfLife": "10 days",
+            "vendor": {
+                "id": 6,
+                "name": "Dairy Farmers",
+                "rating": 4.5,
+                "openingHour": "08:00",
+                "closingHour": "20:00",
+                "markets": ["Oshodi Market", "Kara Market"],
+                "image": "https://example.com/dairy-farmers.jpg"
+            },
+            "category": "Dairy"
+        },
+        {
+            "id": 154,
+            "name": "Exotic Petunias",
+            "aliases": ["Vibrant Petunia Collection", "Colorful Blooms"],
+            "image": "https://media.istockphoto.com/id/1320687143/photo/petunia-patch.webp?b=1&s=612x612&w=0&k=20&c=kmqeQNdR-aesYoj4J2Af61JRN-m8Z4vAo4MEZFUS6d4=",
+            "shortDesc": "Adorn your garden with our exotic petunias",
+            "longDesc": "Transform your garden into a burst of colors with our Exotic Petunias. This vibrant collection of petunias features a range of hues, adding a playful and lively atmosphere to your outdoor space. Elevate your garden aesthetics with our exotic petunias!",
+            "dateCreated": "2024-01-11T17:30:00.000Z",
+            "rating": 4.6,
+            "reviewsCount": 36,
+            "availabilityCount": 55,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 300,
+            "maxPrice": 800,
+            "shelfLife": "3 weeks",
+            "vendor": {
+                "id": 13,
+                "name": "Flower Avenue",
+                "rating": 4.5,
+                "openingHour": "09:00",
+                "closingHour": "17:00",
+                "markets": ["Idumota", "Tejuosho"],
+                "image": "https://example.com/flower-avenue.jpg"
+            },
+            "category": "Flowers"
+        },
+        {
+            "id": 155,
+            "name": "Organic Chickpeas",
+            "aliases": ["Garbanzo Beans", "Protein-Packed Chickpeas"],
+            "image": "https://media.istockphoto.com/id/1741405690/photo/dried-raw-chickpea-on-the-wooden-background.webp?b=1&s=612x612&w=0&k=20&c=aOQ49mfxZIt_T-z3eReoJesuD5LmbD5Wiz2TiDVQXmY=",
+            "shortDesc": "Fuel your body with organic chickpeas",
+            "longDesc": "Experience the nutritional power of our Organic Chickpeas. Packed with protein and fiber, these garbanzo beans are perfect for adding a healthy touch to your meals. Elevate your diet with the goodness of organic chickpeas!",
+            "dateCreated": "2024-01-11T19:15:00.000Z",
+            "rating": 4.4,
+            "reviewsCount": 31,
+            "availabilityCount": 70,
+            "hasPriceRange": false,
+            "price": 1200,
+            "maxPrice": null,
+            "minPrice": null,
+            "shelfLife": "6 months",
+            "vendor": {
+                "id": 9,
+                "name": "Green Thumbs",
+                "rating": 4.0,
+                "openingHour": "11:00",
+                "closingHour": "20:00",
+                "markets": ["Oyingbo", "Tejuosho"],
+                "image": "https://example.com/green-thumbs.jpg"
+            },
+            "category": "Grains"
+        },
+        {
+            "id": 157,
+            "name": "Juicy Watermelon",
+            "aliases": ["Sweet Melon", "Refreshing Watermelon"],
+            "image": "https://images.freeimages.com/images/large-previews/98c/watermelon-1506864.jpg?fmt=webp&w=500",
+            "shortDesc": "Quench your thirst with our juicy watermelon",
+            "longDesc": "Stay refreshed with the succulent taste of our Juicy Watermelon. Bursting with sweetness and hydration, this refreshing fruit is perfect for hot summer days. Elevate your hydration game with our juicy watermelon slices!",
+            "dateCreated": "2024-01-12T09:30:00.000Z",
+            "rating": 4.8,
+            "reviewsCount": 40,
+            "availabilityCount": 55,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 300,
+            "maxPrice": 800,
+            "shelfLife": "1 week",
+            "vendor": {
+                "id": 4,
+                "name": "Fruit Lane",
+                "rating": 4.7,
+                "openingHour": "09:00",
+                "closingHour": "19:00",
+                "markets": ["Mushin", "Abule Oja"],
+                "image": "https://example.com/fruit-lane.jpg"
+            },
+            "category": "Fruits"
+        },
+        {
+            "id": 158,
+            "name": "Homestyle Granola",
+            "aliases": ["Oat Granola", "Nutty Crunch"],
+            "image": "https://images.freeimages.com/images/large-previews/b28/spoon-1322527.jpg?fmt=webp&w=500",
+            "shortDesc": "Start your day with our homestyle granola",
+            "longDesc": "Fuel your mornings with the wholesome goodness of our Homestyle Granola. Packed with oats, nuts, and dried fruits, this nutritious granola is a delightful addition to your breakfast routine. Elevate your day with our homestyle granola!",
+            "dateCreated": "2024-01-12T11:15:00.000Z",
+            "rating": 4.5,
+            "reviewsCount": 30,
+            "availabilityCount": 65,
+            "hasPriceRange": false,
+            "price": 1200,
+            "maxPrice": null,
+            "minPrice": null,
+            "shelfLife": "5 weeks",
+            "vendor": {
+                "id": 8,
+                "name": "Spice World",
+                "rating": 4.4,
+                "openingHour": "10:00",
+                "closingHour": "19:00",
+                "markets": ["Tejuosho", "Bariga"],
+                "image": "https://example.com/spice-world.jpg"
+            },
+            "category": "Cereals"
+        },
+        {
+            "id": 159,
+            "name": "Tropical Mango Delight",
+            "aliases": ["Exotic Mango", "Sweet Mango"],
+            "image": "https://images.freeimages.com/images/large-previews/e2a/brazilian-mango-1328552.jpg?fmt=webp&w=500",
+            "shortDesc": "Indulge in the tropical sweetness of mango",
+            "longDesc": "Transport yourself to a tropical paradise with our Tropical Mango Delight. Savor the sweet and juicy goodness of exotic mangoes, perfect for snacking or adding a burst of flavor to your dishes. Elevate your taste buds with our mango delight!",
+            "dateCreated": "2024-01-12T13:00:00.000Z",
+            "rating": 4.6,
+            "reviewsCount": 36,
+            "availabilityCount": 60,
+            "hasPriceRange": true,
+            "price": null,
+            "minPrice": 500,
+            "maxPrice": 1200,
+            "shelfLife": "1 week",
+            "vendor": {
+                "id": 5,
+                "name": "Meat Delight",
+                "rating": 4.2,
+                "openingHour": "08:30",
+                "closingHour": "18:30",
+                "markets": ["Mile-12", "Idumota"],
+                "image": "https://example.com/meat-delight.jpg"
+            },
+            "category": "Fruits"
         }
     ]
 }
