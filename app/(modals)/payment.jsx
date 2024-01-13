@@ -10,6 +10,7 @@ import AppText from "@/components/AppText";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { TextInput } from "react-native-gesture-handler";
 import LottieView from "lottie-react-native";
+import { useUser } from "@clerk/clerk-expo";
 
 const payment = () => {
     const animation = useRef(null);
@@ -17,6 +18,7 @@ const payment = () => {
     const [isLoading, setIsLoading] = useState(false);
     const params = useLocalSearchParams();
     const router = useRouter();
+    const { user } = useUser();
 
     const { productId } = params;
 
@@ -26,8 +28,15 @@ const payment = () => {
             .min(16, "Card number must be 16 digits")
             .max(16, "Card number must be 16 digits")
             .required("Required"),
-        expirationDate: Yup.string()
-            .matches(/^\d{2}\/\d{2}$/, "Invalid format (MM/YY)")
+        expirationMonth: Yup.string()
+            .matches(/^[0-9]+$/, "Expiration month must only contain digits")
+            .min(2, "Expiration month must be 2 digits")
+            .max(2, "Expiration month must be 2 digits")
+            .required("Required"),
+        expirationYear: Yup.string()
+            .matches(/^[0-9]+$/, "Expiration year must only contain digits")
+            .min(2, "Expiration month must be 2 digits")
+            .max(2, "Expiration month must be 2 digits")
             .required("Required"),
         cvv: Yup.string()
             .matches(/^[0-9]+$/, "CVV must only contain digits")
@@ -74,8 +83,9 @@ const payment = () => {
 
             console.log(response.data);
 
-            await addNewOrder();
+            // await addNewOrder();
             setPaymentSuccessful(true);
+            animation.current?.play();
         } catch (error) {
             console.error("Error completing payment:", error);
         } finally {
@@ -91,157 +101,172 @@ const payment = () => {
 
     return (
         <View className="flex-1 px-4">
-            {paymentSuccessful ? (
-                <View className="flex-1 items-center justify-center">
-                    <AppText className="text-lg font-semibold">
-                        Payment Successful
-                    </AppText>
+            <View className={`flex-1 items-center mt-12 ${paymentSuccessful ? '' : 'hidden'}`}>
+                <AppText className="text-lg font-semibold">
+                    Payment Successful
+                </AppText>
+                <LottieView
+                    autoPlay
+                    loop={true}
+                    ref={animation}
+                    className="mx-auto"
+                    style={{
+                        width: 200,
+                        height: 200,
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                    }}
+                    source={paymentSuccessfulAnimation}
+                />
+                {/* <TouchableOpacity
+                    className="px-12"
+                    style={defaultStyles.btn}
+                    onPress={() => router.push('/(tabs)/_layout')}
+                >
+                    <Text style={defaultStyles.btnText}>Shop again</Text>
+                </TouchableOpacity> */}
+            </View>
+            <View className={`mt-6 ${paymentSuccessful ? 'hidden' : ''}`}>
+                <View className="flex w-full justify-center">
                     <LottieView
                         autoPlay
-                        loop={true}
-                        ref={animation}
-                        className="mx-auto"
                         style={{
-                            width: 200,
-                            height: 200,
+                            width: 150,
+                            height: 150,
+                            marginLeft: "auto",
+                            marginRight: "auto",
                             // backgroundColor: "#DFE0DC1A",
                         }}
-                        source={paymentSuccessfulAnimation}
+                        source={cardAnimation}
                     />
-                    <TouchableOpacity
-                    className="px-12"
-                        style={defaultStyles.btn}
-                        onPress={() => router.replace("/(tabs)/orders")}
-                    >
-                        <Text style={defaultStyles.btnText}>
-                            Show my Orders
-                        </Text>
-                    </TouchableOpacity>
                 </View>
-            ) : (
-                <View className="mt-6">
-                    <View className="flex w-full justify-center">
-                        <LottieView
-                            autoPlay
-                            ref={animation}
-                            style={{
-                                width: 150,
-                                height: 150,
-                                marginLeft: "auto",
-                                marginRight: "auto",
-                                // backgroundColor: "#DFE0DC1A",
-                            }}
-                            source={cardAnimation}
-                        />
-                    </View>
-                    <Formik
-                        initialValues={{
-                            cardNumber: "",
-                            expirationDate: "",
-                            cvv: "",
-                        }}
-                        validationSchema={paymentFormValidationSchema}
-                        onSubmit={async (values, { setSubmitting }) => {
-                            await checkout(values);
-                            setSubmitting(false);
-                        }}
-                    >
-                        {({
-                            handleChange,
-                            handleBlur,
-                            handleSubmit,
-                            values,
-                            touched,
-                            errors,
-                        }) => (
-                            <View>
-                                <View className={`mb-4`}>
+                <Formik
+                    initialValues={{
+                        cardNumber: "",
+                        expirationMonth: "",
+                        cvv: "",
+                    }}
+                    validationSchema={paymentFormValidationSchema}
+                    onSubmit={async (values, { setSubmitting }) => {
+                        await checkout(values);
+                        setSubmitting(false);
+                    }}
+                >
+                    {({
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        values,
+                        touched,
+                        errors,
+                    }) => (
+                        <View>
+                            <View className={`mb-4`}>
+                                <TextInput
+                                    onChangeText={handleChange("cardNumber")}
+                                    onBlur={handleBlur("cardNumber")}
+                                    value={values.cardNumber}
+                                    className={`h-14 p-4 font-[Rubik] border ${
+                                        touched.cardNumber && errors.cardNumber
+                                            ? "border-red-500"
+                                            : "border-green-pale"
+                                    } rounded-md`}
+                                    placeholder="Enter your card number"
+                                    keyboardType="numeric"
+                                    maxLength={16}
+                                />
+
+                                {touched.cardNumber && errors.cardNumber ? (
+                                    <Text className="text-red-500 text-center">
+                                        {errors.cardNumber}
+                                    </Text>
+                                ) : null}
+                            </View>
+                            <View className="flex flex-row gap-4">
+                                <View className={`flex-1 mb-4`}>
                                     <TextInput
                                         onChangeText={handleChange(
-                                            "cardNumber"
+                                            "expirationMonth"
                                         )}
-                                        onBlur={handleBlur("cardNumber")}
-                                        value={values.cardNumber}
-                                        className={`h-14 p-4 font-[Rubik] border ${
-                                            touched.cardNumber &&
-                                            errors.cardNumber
+                                        onBlur={handleBlur("expirationMonth")}
+                                        value={values.expirationMonth}
+                                        className={`h-14 p-4 text-center font-[Rubik] border ${
+                                            touched.expirationMonth &&
+                                            errors.expirationMonth
                                                 ? "border-red-500"
                                                 : "border-green-pale"
-                                        } rounded-md tracking-wider`}
-                                        placeholder="Enter your card number"
+                                        } rounded-md`}
+                                        placeholder="MM"
                                         keyboardType="numeric"
-                                        maxLength={16}
+                                        maxLength={2}
                                     />
-
-                                    {touched.cardNumber && errors.cardNumber ? (
-                                        <Text style={{ color: "red" }}>
-                                            {errors.cardNumber}
+                                    {touched.expirationMonth &&
+                                    errors.expirationMonth ? (
+                                        <Text className="text-red-500 text-center">
+                                            {errors.expirationMonth}
                                         </Text>
                                     ) : null}
                                 </View>
-                                <View className="flex flex-row gap-4">
-                                    <View className={`flex-1 mb-4`}>
-                                        <TextInput
-                                            onChangeText={handleChange(
-                                                "expirationDate"
-                                            )}
-                                            onBlur={handleBlur(
-                                                "expirationDate"
-                                            )}
-                                            value={values.expirationDate}
-                                            className={`h-14 p-4 font-[Rubik] border ${
-                                                touched.expirationDate &&
-                                                errors.expirationDate
-                                                    ? "border-red-500"
-                                                    : "border-green-pale"
-                                            } rounded-md tracking-wider`}
-                                            placeholder="MM/YY"
-                                            // keyboardType="numeric"
-                                        />
-                                        {touched.expirationDate &&
-                                        errors.expirationDate ? (
-                                            <Text style={{ color: "red" }}>
-                                                {errors.expirationDate}
-                                            </Text>
-                                        ) : null}
-                                    </View>
-                                    <View className={`flex-1 mb-4`}>
-                                        <TextInput
-                                            onChangeText={handleChange("cvv")}
-                                            onBlur={handleBlur("cvv")}
-                                            value={values.cvv}
-                                            className={`h-14 p-4 font-[Rubik] border ${
-                                                touched.cvv && errors.cvv
-                                                    ? "border-red-500"
-                                                    : "border-green-pale"
-                                            } rounded-md tracking-wider`}
-                                            placeholder="CVV"
-                                            keyboardType="numeric"
-                                            maxLength={3}
-                                        />
-                                        {touched.cvv && errors.cvv ? (
-                                            <Text style={{ color: "red" }}>
-                                                {errors.cvv}
-                                            </Text>
-                                        ) : null}
-                                    </View>
-                                </View>
-                                <View className="mt-4">
-                                    <TouchableOpacity
-                                        style={defaultStyles.btn}
-                                        onPress={handleSubmit}
-                                        disabled={isLoading}
-                                    >
-                                        <Text style={defaultStyles.btnText}>
-                                            Checkout
+                                <View className={`flex-1 mb-4`}>
+                                    <TextInput
+                                        onChangeText={handleChange(
+                                            "expirationYear"
+                                        )}
+                                        onBlur={handleBlur("expirationYear")}
+                                        value={values.expirationYear}
+                                        className={`h-14 p-4 text-center font-[Rubik] border ${
+                                            touched.expirationYear &&
+                                            errors.expirationYear
+                                                ? "border-red-500"
+                                                : "border-green-pale"
+                                        } rounded-md`}
+                                        placeholder="YY"
+                                        keyboardType="numeric"
+                                        maxLength={2}
+                                    />
+                                    {touched.expirationYear &&
+                                    errors.expirationYear ? (
+                                        <Text className="text-red-500 text-center">
+                                            {errors.expirationYear}
                                         </Text>
-                                    </TouchableOpacity>
+                                    ) : null}
+                                </View>
+                                <View className={`flex-1 mb-4`}>
+                                    <TextInput
+                                        onChangeText={handleChange("cvv")}
+                                        onBlur={handleBlur("cvv")}
+                                        value={values.cvv}
+                                        className={`h-14 p-4 text-center font-[Rubik] border ${
+                                            touched.cvv && errors.cvv
+                                                ? "border-red-500"
+                                                : "border-green-pale"
+                                        } rounded-md`}
+                                        placeholder="CVV"
+                                        keyboardType="numeric"
+                                        maxLength={3}
+                                    />
+                                    {touched.cvv && errors.cvv ? (
+                                        <Text className="text-red-500 text-center">
+                                            {errors.cvv}
+                                        </Text>
+                                    ) : null}
                                 </View>
                             </View>
-                        )}
-                    </Formik>
-                </View>
-            )}
+                            <View className="mt-4">
+                                <TouchableOpacity
+                                    style={defaultStyles.btn}
+                                    onPress={handleSubmit}
+                                    disabled={isLoading}
+                                >
+                                    <Text style={defaultStyles.btnText}>
+                                        Checkout
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    )}
+                </Formik>
+            </View>
         </View>
     );
 };

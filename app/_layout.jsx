@@ -8,6 +8,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from '@expo/vector-icons';
 import Colors from "@/constants/Colors";
+import ModalHeaderText from '@/components/ModalHeaderText';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 

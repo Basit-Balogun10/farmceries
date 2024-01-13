@@ -93,47 +93,47 @@
         },
         {
             "name": "Vegetables",
-            "icon": "home"
+            "icon": "leaf-circle"
         },
         {
             "name": "Fruits",
-            "icon": "house-siding"
+            "icon": "fruit-grapes"
         },
         {
             "name": "Water",
-            "icon": "local-fire-department"
+            "icon": "water"
         },
         {
             "name": "Drink",
-            "icon": "local-fire-department"
+            "icon": "bottle-soda-classic"
         },
         {
             "name": "Flowers",
-            "icon": "videogame-asset"
+            "icon": "flower"
         },
         {
             "name": "Cereals",
-            "icon": "apartment"
+            "icon": "rice"
         },
         {
             "name": "Grains",
-            "icon": "beach-access"
+            "icon": "grain"
         },
         {
             "name": "Spices",
-            "icon": "nature-people"
+            "icon": "chili-hot"
         },
         {
             "name": "Poultry",
-            "icon": "nature-people"
+            "icon": "turkey"
         },
         {
             "name": "Pets",
-            "icon": "nature-people"
+            "icon": "dog-side"
         },
         {
             "name": "Livestock",
-            "icon": "nature-people"
+            "icon": "cow"
         }
     ],
     "products": [
@@ -141,7 +141,7 @@
             "id": 1,
             "name": "Fresh Carrots",
             "aliases": [""],
-            "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1598170845058-32b9d6a5da37%3Fq%3D80%26w%3D1000%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fycm90fGVufDB8fDB8fHww&tbnid=QJaCEyC62SA6HM&vet=12ahUKEwibzqe66diDAxVnpycCHRTbCB0QMygCegQIARB4..i&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fcarrot&docid=6bud9zds7liseM&w=1000&h=1500&q=carrot%20images&ved=2ahUKEwibzqe66diDAxVnpycCHRTbCB0QMygCegQIARB4",
+            "image": "https://images.freeimages.com/images/large-previews/2e7/carrots-1511634.jpg",
             "shortDesc": "Nutritious organic carrots",
             "longDesc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolorem voluptatibus inventore, voluptatem quia sunt repellat tempore asperiores illum alias ut voluptates aliquid eius quis consequuntur labore rem modi reiciendis.",
             "dateCreated": "2024-01-05T00:00:00.000Z",
@@ -230,7 +230,7 @@
             "maxPrice": 5000,
             "shelfLife": "1 week",
             "vendor": "The Organic Shop",
-            "category": "Fruits"
+            "category": "Spices"
         }
     ]
 }

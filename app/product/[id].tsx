@@ -54,6 +54,19 @@ const DetailsPage = () => {
         }
     };
 
+    const handlePriceChange = (value) => {
+        if (
+            product?.hasPriceRange &&
+            (value < product?.minPrice || value > product.maxPrice)
+        ) {
+            setPriceError(true);
+        } else {
+            setPriceError(false);
+        }
+
+        setCustomPrice(value);
+    };
+
     // const getPaymentLink = async (product) => {
     //     try {
     //         const response = await axios.post(
@@ -251,7 +264,7 @@ const DetailsPage = () => {
                                 placeholder={`${product.minPrice} -  ${product.maxPrice}`}
                                 keyboardType="numeric"
                                 value={customPrice}
-                                onChangeText={setCustomPrice}
+                                onChangeText={handlePriceChange}
                                 className={`h-12 p-2 w-32 font-[Rubik] border ${
                                     priceError
                                         ? "border-red-500"
@@ -271,10 +284,14 @@ const DetailsPage = () => {
                         <TouchableOpacity
                             style={defaultStyles.btn}
                             className={`${
-                                product.hasPriceRange && customPrice === "" ? "opacity-50" : "opacity-100"
+                                (product.hasPriceRange && customPrice === "") ||
+                                priceError
+                                    ? "opacity-50"
+                                    : "opacity-100"
                             } px-5`}
                             disabled={
-                                product.hasPriceRange && customPrice === ""
+                                (product.hasPriceRange && customPrice === "") ||
+                                priceError
                             }
                             onPress={() =>
                                 router.push({
@@ -352,7 +369,7 @@ const styles = StyleSheet.create({
     },
     footerPrice: {
         fontSize: 25,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         fontFamily: "Rubik",
     },
     roundButton: {

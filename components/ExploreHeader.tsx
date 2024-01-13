@@ -9,8 +9,7 @@ import {
 } from "react-native";
 import React, { useRef, useState } from "react";
 import Colors from "@/constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import { Link } from "expo-router";
 import appData from "@/assets/data/appData.json";
@@ -93,7 +92,7 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
                             }
                             onPress={() => selectCategory(index)}
                         >
-                            <MaterialIcons
+                            <MaterialCommunityIcons
                                 name={item.icon as any}
                                 size={24}
                                 color={
