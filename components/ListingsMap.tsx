@@ -30,10 +30,7 @@ const ListingsMap = memo(({ listings }: Props) => {
 
     // When a marker is selected, navigate to the listing page
     const onMarkerSelected = (event) => {
-        router.push({
-            pathName: "/",
-            params: { filter: { market: event.name } },
-        });
+        router.push(`/?filter=market&value=${event.name}`);
     };
 
     // Focus the map on the user's location
@@ -106,9 +103,7 @@ const ListingsMap = memo(({ listings }: Props) => {
                         onPress={() => onMarkerSelected(item)}
                     >
                         <View style={styles.marker}>
-                            <Text style={styles.markerText}>
-                                {item.name}
-                            </Text>
+                            <Text style={styles.markerText}>{item.name}</Text>
                         </View>
                     </Marker>
                 ))}

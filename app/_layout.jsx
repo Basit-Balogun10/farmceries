@@ -118,10 +118,10 @@ function RootLayoutNav() {
                 }}
             />
             <Stack.Screen
-                name="(modals)/payment"
+                name="(modals)/confirmPayment"
                 options={{
                     presentation: "modal",
-                    title: "Complete Payment",
+                    title: "Confirm Payment",
                     headerTitleStyle: {
                         fontFamily: "Rubik",
                     },
@@ -130,6 +130,20 @@ function RootLayoutNav() {
                             <Ionicons name="close-outline" size={28} />
                         </TouchableOpacity>
                     ),
+                }}
+            />
+            <Stack.Screen
+                name="makePayment"
+                options={{
+                    title: "Payment",
+                    headerTitleStyle: {
+                        fontFamily: "Rubik",
+                    },
+                    // headerLeft: () => (
+                    //     <TouchableOpacity onPress={() => router.back()}>
+                    //         <Ionicons name="close-outline" size={28} />
+                    //     </TouchableOpacity>
+                    // ),
                 }}
             />
         </Stack>

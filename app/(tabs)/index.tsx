@@ -16,13 +16,14 @@ const Page = () => {
     const params = useLocalSearchParams();
 
     useEffect(() => {
-        if (params) {
-            const { price, market, vendor } = params;
+        console.log("params:", params);
+        if (params.filter) {
+            const { filter, value } = params;
 
-            if (price) {
-                const parsedPrice = JSON.parse(price);
-                const min = parsedPrice.min || 0;
-                const max = parsedPrice.max || Infinity;
+            if (filter === "price") {
+                const parsedPrice = value.split(",");
+                const min = parsedPrice[0] || 0;
+                const max = parsedPrice[1] || Infinity;
                 const filteredProducts = products.filter((product) => {
                     if (product.hasPriceRange) {
                         return (
@@ -34,30 +35,27 @@ const Page = () => {
                 setProducts(filteredProducts);
             }
 
-            if (market) {
+            if (filter === "market") {
                 // const filteredMarkets = markets.filter((market) => market.name.toLowerCase() === market.toLowerCase())
                 const filteredProducts = products.filter(
                     (product) =>
-                        product.vendor.market.name.toLowerCase() ===
-                        market.toLowerCase()
+                        product.vendor.markets.includes(value.toLowerCase())
                 );
                 setProducts(filteredProducts);
             }
 
-            if (vendor) {
+            if (filter === "vendor") {
                 const filteredProducts = products.filter(
                     (product) =>
                         product.vendor.name.toLowerCase() ===
-                        vendor.toLowerCase()
+                        value.toLowerCase()
                 );
                 setProducts(filteredProducts);
             }
 
-            if (market || vendor || price) {
-                setIsFiltered(true);
-            }
+            setIsFiltered(true);
         }
-    }, []);
+    }, [params]);
 
     const handleCategoryFilter = (category: string) => {
         setCategory(category);

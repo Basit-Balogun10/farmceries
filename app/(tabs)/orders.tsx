@@ -3,48 +3,49 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-expo";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Animated, {
-    FadeIn,
-    FadeOut,
-} from "react-native-reanimated";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import Colors from "@/constants/Colors";
 import { FlatList } from "react-native-gesture-handler";
 import { useRouter } from "expo-router";
 
 const AnimatedTouchableOpacity =
-  Animated.createAnimatedComponent(TouchableOpacity);
+    Animated.createAnimatedComponent(TouchableOpacity);
 
-  const Orders = () => {
-    const router = useRouter()
+const Orders = () => {
+    const router = useRouter();
     const [orders, setOrders] = useState([]);
     const { user } = useUser();
+
+    const FARMCERIES_API = process.env.EXPO_FARMCERIES_API;
 
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get(`/api/orders?userEmail=${user?.emailAddresses[0]?.emailAddress}`);
+                // const response = await axios.get(`/api/orders?userEmail=${user?.emailAddresses[0]?.emailAddress}`);
+                const response = await axios.get(
+                    `https://farmceries-backend.vercel.app/api/orders?userEmail=basitbalogun10@gmail.com`
+                );
 
                 console.log("Fetched user orders: ", response.data);
-                setOrders(response.data)
+                setOrders(response.data);
             } catch (error) {
                 console.error("Error fetching orders:", error);
-                // Handle the error in your application
             }
         };
 
-        fetchOrders()
+        fetchOrders();
     }, []);
 
     const renderOrderItem = ({ item }) => (
-    <AnimatedTouchableOpacity
-          style={styles.cardPreview}
-          entering={FadeIn.duration(200)}
-          exiting={FadeOut.duration(200)}
-      >
-          <Text style={styles.previewText}>{item.product}</Text>
-          <Text style={styles.previewdData}>{item.status}</Text>
-      </AnimatedTouchableOpacity>
-  );
+        <AnimatedTouchableOpacity
+            style={styles.cardPreview}
+            entering={FadeIn.duration(200)}
+            exiting={FadeOut.duration(200)}
+        >
+            <Text style={styles.previewText}>{item.product}</Text>
+            <Text style={styles.previewdData}>{item.status}</Text>
+        </AnimatedTouchableOpacity>
+    );
 
     return (
         <SafeAreaView className="flex-1">
@@ -58,12 +59,12 @@ const AnimatedTouchableOpacity =
 };
 
 const styles = StyleSheet.create({
-  cardPreview: {
+    cardPreview: {
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 20,
     },
-  previewText: {
+    previewText: {
         fontFamily: "Rubik",
         fontSize: 14,
         color: Colors.grey,
@@ -73,6 +74,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: Colors.dark,
     },
-})
+});
 
 export default Orders;

@@ -5,143 +5,117 @@
             "name": "Abule Oja",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.5244, 6.3792]
+                "coordinates": [3.382669, 6.51729]
             },
             "location": {
-                "longitude": 3.5244,
-                "latitude": 6.3792
+                "longitude": 3.382669,
+                "latitude": 6.51729
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=m9JY9l28KGpQBcvkywtPDg&cb_client=search.gws-prod.gps&w=408&h=240&yaw=346.8498&pitch=0&thumbfov=100"
         },
         {
             "id": 2,
             "name": "Bariga Market",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.0244, 6.3792]
+                "coordinates": [3.391958, 6.535821]
             },
             "location": {
-                "longitude": 3.0244,
-                "latitude": 6.3792
+                "longitude": 6.608470,
+                "latitude": 6.5378
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://lh5.googleusercontent.com/p/AF1QipNrueol5mWS3PGlk0eQhUoL9kDK2RK-2d1LyZZr=w253-h336-p-k-no"
         },
         {
             "id": 3,
             "name": "Oyingbo",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.9244, 6.3592]
+                "coordinates": [3.37865, 6.47517]
             },
             "location": {
-                "longitude": 3.9244,
-                "latitude": 6.3592
+                "longitude": 3.37865,
+                "latitude": 6.47517
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://lh5.googleusercontent.com/p/AF1QipNHdeetsax64ho-2l7tFxt7JaLqMcwvIY85hbhE=w408-h544-k-no"
         },
         {
             "id": 4,
             "name": "Ojuwoye",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.5244, 6.3792]
+                "coordinates": [3.368912, 6.608470]
             },
             "location": {
-                "longitude": 3.5244,
-                "latitude": 6.3792
+                "longitude": 3.368912,
+                "latitude": 6.608470
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=22aqrSjmec-JU1SYAmOGKw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=332.5689&pitch=0&thumbfov=100"
         },
         {
             "id": 5,
             "name": "Tejuosho",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.5244, 6.5792]
+                "coordinates": [3.368916, 6.508697]
             },
             "location": {
-                "longitude": 3.5244,
-                "latitude": 6.5792
+                "longitude": 3.368916,
+                "latitude": 6.508697
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://lh5.googleusercontent.com/p/AF1QipP7pCR_aq9pKNxVKwsXN87YH4LVnGLAQkUt-rJu=w426-h240-k-no"
         },
         {
             "id": 6,
-            "name": "Idumota",
+            "name": "Idumota Market",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.6244, 6.3792]
+                "coordinates": [3.384563, 6.608470]
             },
             "location": {
-                "longitude": 3.6244,
-                "latitude": 6.3792
+                "longitude": 3.384563,
+                "latitude": 6.608470
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://lh5.googleusercontent.com/p/AF1QipOlFojH7JSgehHJhG0psCAcqOjri0aWxOkkpkrT=w408-h544-k-no"
         },
         {
             "id": 7,
             "name": "Mile-12",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.3244, 6.3792]
+                "coordinates": [3.395600, 6.608470]
             },
             "location": {
-                "longitude": 3.3244,
-                "latitude": 6.3792
+                "longitude": 3.395600,
+                "latitude": 6.608470
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://lh5.googleusercontent.com/p/AF1QipN43BR44EBewW4-5If_H4yq0el_OPppXuyKJjl1=w408-h306-k-no"
         },
         {
             "id": 8,
-            "name": "Eko Market",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [3.4244, 6.2792]
-            },
-            "location": {
-                "longitude": 3.4244,
-                "latitude": 6.2792
-            },
-            "image": "https://picsum.photos/seed/696/3000/2000"
-        },
-        {
-            "id": 9,
             "name": "Oshodi Market",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.1244, 6.4892]
+                "coordinates": [3.350141, 6.558230]
             },
             "location": {
-                "longitude": 3.1244,
-                "latitude": 6.4892
+                "longitude": 3.350141,
+                "latitude": 6.558230
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://lh5.googleusercontent.com/p/AF1QipP2bvoqh-t1y1LIY7kPw2CqlsLhdksG_eFNVggV=w408-h306-k-no"
         },
         {
-            "id": 10,
+            "id": 9,
             "name": "Kara Market",
             "geometry": {
                 "type": "Point",
-                "coordinates": [3.7244, 6.4332]
+                "coordinates": [3.382952, 6.647035]
             },
             "location": {
-                "longitude": 3.7244,
-                "latitude": 6.4332
+                "longitude": 3.382952,
+                "latitude": 6.647035
             },
-            "image": "https://picsum.photos/seed/696/3000/2000"
-        },
-        {
-            "id": 11,
-            "name": "Abule Ijesha",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [3.5244, 6.4792]
-            },
-            "location": {
-                "longitude": 3.5244,
-                "latitude": 6.4792
-            },
-            "image": "https://picsum.photos/seed/696/3000/2000"
+            "image": "https://lh5.googleusercontent.com/p/AF1QipOXKGFQhAz1a8FsI8qa4-DyoPii4s9QO2nGibhy=w426-h240-k-no"
         }
     ],
     "vendors": [
@@ -169,7 +143,7 @@
             "rating": 4.5,
             "openingHour": "07:00",
             "closingHour": "19:00",
-            "markets": ["Bariga", "Idumota"],
+            "markets": ["Bariga", "Idumota Market"],
             "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
@@ -196,7 +170,7 @@
             "rating": 4.2,
             "openingHour": "08:30",
             "closingHour": "18:30",
-            "markets": ["Mile-12", "Idumota"],
+            "markets": ["Mile-12", "Idumota Market"],
             "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
@@ -214,7 +188,7 @@
             "rating": 4.6,
             "openingHour": "07:00",
             "closingHour": "15:00",
-            "markets": ["Eko Market", "Kara Market"],
+            "markets": ["Idumota Market", "Kara Market"],
             "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
@@ -268,7 +242,7 @@
             "rating": 4.5,
             "openingHour": "09:00",
             "closingHour": "17:00",
-            "markets": ["Idumota", "Tejuosho"],
+            "markets": ["Idumota Market", "Tejuosho"],
             "image": "https://picsum.photos/seed/696/3000/2000"
         },
         {
@@ -286,7 +260,7 @@
             "rating": 4.9,
             "openingHour": "12:00",
             "closingHour": "22:00",
-            "markets": ["Eko Market", "Kara Market"],
+            "markets": ["Idumota Market", "Kara Market"],
             "image": "https://picsum.photos/seed/696/3000/2000"
         }
     ],
@@ -475,7 +449,7 @@
                 "rating": 4.2,
                 "openingHour": "08:30",
                 "closingHour": "18:30",
-                "markets": ["Mile-12", "Idumota"],
+                "markets": ["Mile-12", "Idumota Market"],
                 "image": "https://example.com/meat-delight.jpg"
             },
             "category": "Poultry"
@@ -583,7 +557,7 @@
                 "rating": 4.5,
                 "openingHour": "09:00",
                 "closingHour": "17:00",
-                "markets": ["Idumota", "Tejuosho"],
+                "markets": ["Idumota Market", "Tejuosho"],
                 "image": "https://example.com/flower-avenue.jpg"
             },
             "category": "Flowers"
@@ -610,7 +584,7 @@
                 "rating": 4.9,
                 "openingHour": "12:00",
                 "closingHour": "22:00",
-                "markets": ["Eko Market", "Kara Market"],
+                "markets": ["Idumota Market", "Kara Market"],
                 "image": "https://example.com/pure-honey.jpg"
             },
             "category": "Honey"
@@ -718,7 +692,7 @@
                 "rating": 4.5,
                 "openingHour": "09:00",
                 "closingHour": "17:00",
-                "markets": ["Idumota", "Tejuosho"],
+                "markets": ["Idumota Market", "Tejuosho"],
                 "image": "https://example.com/flower-avenue.jpg"
             },
             "category": "Flowers"
@@ -772,7 +746,7 @@
                 "rating": 4.5,
                 "openingHour": "09:00",
                 "closingHour": "17:00",
-                "markets": ["Idumota", "Tejuosho"],
+                "markets": ["Idumota Market", "Tejuosho"],
                 "image": "https://example.com/flower-avenue.jpg"
             },
             "category": "Flowers"
@@ -880,7 +854,7 @@
                 "rating": 4.2,
                 "openingHour": "08:30",
                 "closingHour": "18:30",
-                "markets": ["Mile-12", "Idumota"],
+                "markets": ["Mile-12", "Idumota Market"],
                 "image": "https://example.com/meat-delight.jpg"
             },
             "category": "Fruits"

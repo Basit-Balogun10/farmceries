@@ -1,10 +1,4 @@
-import {
-    View,
-    Text,
-    StyleSheet,
-    ScrollView,
-    SafeAreaView,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import { useState } from "react";
 import Animated, {
     FadeIn,
@@ -19,14 +13,14 @@ import { defaultStyles } from "@/constants/Styles";
 import Colors from "@/constants/Colors";
 import appData from "@/assets/data/appData.json";
 import { useRouter } from "expo-router";
-import {Image} from 'expo-image'
+import { Image } from "expo-image";
 // @ts-ignore
 import DatePicker from "react-native-modern-datepicker";
 
 const AnimatedTouchableOpacity =
     Animated.createAnimatedComponent(TouchableOpacity);
 const blurhash =
-  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+    "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const Page = () => {
     const [openCard, setOpenCard] = useState(0);
@@ -81,8 +75,8 @@ const Page = () => {
         }
     };
 
-    const handleFilter = (filter) => {
-        router.push({ pathname: "/", params: { filter } });
+    const handleFilter = (filter, value) => {
+        router.push(`/?filter=${filter}&value=${value}`);
     };
 
     return (
@@ -137,9 +131,7 @@ const Page = () => {
                                 {markets.map((market, index) => (
                                     <TouchableOpacity
                                         onPress={() =>
-                                            handleFilter({
-                                                market: market.name,
-                                            })
+                                            handleFilter("market", market.name)
                                         }
                                         key={index}
                                     >
@@ -215,9 +207,7 @@ const Page = () => {
                                 {vendors.map((vendor, index) => (
                                     <TouchableOpacity
                                         onPress={() =>
-                                            handleFilter({
-                                                market: vendor.name,
-                                            })
+                                            handleFilter("vendor", vendor.name)
                                         }
                                         key={index}
                                     >
@@ -410,12 +400,10 @@ const Page = () => {
                                         { paddingRight: 20, paddingLeft: 50 },
                                     ]}
                                     onPress={() =>
-                                        handleFilter({
-                                            price: JSON.stringify({
-                                                min: priceFilters[0].value,
-                                                max: priceFilters[1].value,
-                                            }),
-                                        })
+                                        handleFilter(
+                                            "price",
+                                            `${priceFilters[0].value},${priceFilters[1].value}`
+                                        )
                                     }
                                 >
                                     <Text style={defaultStyles.btnText}>

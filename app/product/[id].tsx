@@ -1,5 +1,10 @@
-import { Link, useLocalSearchParams, useNavigation } from "expo-router";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+    Link,
+    useLocalSearchParams,
+    useNavigation,
+    useRouter,
+} from "expo-router";
 import {
     View,
     Text,
@@ -11,8 +16,10 @@ import {
     TextInput,
 } from "react-native";
 import * as Linking from "expo-linking";
-import { useRouter } from "expo-router";
+import * as WebBrowser from "expo-web-browser";
+import Constants from "expo-constants";
 import { Ionicons } from "@expo/vector-icons";
+import axios from "axios";
 import appData from "@/assets/data/appData.json";
 import Colors from "@/constants/Colors";
 import Animated, {
@@ -31,17 +38,24 @@ const IMG_HEIGHT = 300;
 const DetailsPage = () => {
     const { id } = useLocalSearchParams();
     const router = useRouter();
+    const navigation = useNavigation();
     const product = appData.products.find(
         (item) => item.id === parseInt(id, 10)
     );
     console.log("Data: ", appData, id);
     console.log("Product: ", product);
-    const navigation = useNavigation();
     const scrollRef = useAnimatedRef<Animated.ScrollView>();
+    const animation = useRef(null);
     const [priceError, setPriceError] = useState(false);
     const [customPrice, setCustomPrice] = useState("");
-    const redirectURL = Linking.createURL("/(tabs)/orders");
+    const [paymentSuccessful, setPaymentSuccessful] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [paymentData, setPaymentData] = useState(null);
+    const [paymentResult, setPaymentResult] = useState(null);
+    const params = useLocalSearchParams();
     const { user } = useUser();
+
+    const FARMCERIES_API = process.env.EXPO_FARMCERIES_API;
 
     const shareListing = async () => {
         try {
@@ -67,38 +81,148 @@ const DetailsPage = () => {
         setCustomPrice(value);
     };
 
-    // const getPaymentLink = async (product) => {
-    //     try {
-    //         const response = await axios.post(
-    //             "https://farmceries-backend.vercel.app/api/flutterwave/payment-link",
-    //             {
-    //                 amount: product.hasPriceRange ? customPrice : product.price, // Replace with the actual amount
-    //                 redirect_url: redirectURL,
-    //                 customer: {
-    //                     email: user?.emailAddresses[0]?.emailAddress,
-    //                 },
-    //             }
-    //         );
+    const addNewOrder = async () => {
+        try {
+            const response = await axios.post(
+                `https://farmceries-backend.vercel.app/api/orders`,
+                {
+                    // userEmail: user?.emailAddresses[0]?.emailAddress,
+                    userEmail: 'basitbalogun10@gmail.com',
+                    productId: "65b62cdd3854e17dfb6275a8",
+                }
+            );
 
-    //         console.log("Flutterwave Payment Link:", response.data);
-    //         return response.data;
-    //     } catch (error) {
-    //         console.error("Error getting payment link:", error);
-    //     }
-    // };
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error adding a new order:", error);
+        }
+    };
 
-    // const checkout = async (product) => {
-    //     console.log("Checking out...");
+    const handleRedirect = (event) => {
+        console.log("Event: ", event);
+        if (Constants.platform.ios) {
+            console.log("dismissing on ios");
+            WebBrowser.dismissBrowser();
+        }
+        // else {
+        //     Linking.removeEventListener("url", handleRedirect);
+        // }
 
-    //     if (product.hasPriceRange && customPrice === "") {
-    //         setPriceError(true);
-    //         return;
-    //     }
+        const data = Linking.parse(event.url);
+        setPaymentData(data);
+    };
 
-    //     const paymentLink = await getPaymentLink(product);
-    //     let result = WebBrowser.openBrowserAsync(paymentLink);
-    //     console.log("PAYMENT RESULT: ", result);
-    // };
+    const openBrowserAsync = async (url) => {
+        // const redirectUrl = Linking.createURL('payment', {
+        //     queryParams: {
+        //         paymentSuccessful: true,
+        //         productId: productId,
+        //     }
+        // });
+        // const result = await WebBrowser.openBrowserAsync(
+        //     `https://checkout.flutterwave.com/v3/checkout?public_key=${FSI_SANDBOX_API_KEY}&tx_ref=${Date.now()}&amount=100&currency=NGN&redirect_url=${redirectUrl}&payment_options=card`,
+        //     {
+        //         showInRecents: true,
+        //     }
+        // );
+
+        // if (Constants.platform.ios) {
+        //     WebBrowser.dismissBrowser();
+        // } else {
+        //     removeLinkingListener();
+        // }
+
+        // const data = Linking.parse(result.url);
+        // setPaymentData(data);
+
+        try {
+            const eventSubscription = Linking.addEventListener(
+                "url",
+                handleRedirect
+            );
+            let result = await WebBrowser.openBrowserAsync(url);
+
+            if (Constants.platform.ios) {
+                eventSubscription.remove();
+            }
+
+            setPaymentResult(result);
+        } catch (error) {
+            console.log("Payment error: ", error);
+        }
+    };
+
+    const verifyPayment = async (reference) => {
+        try {
+            const response = await axios.get(
+                `https://farmceries-backend.vercel.app/api/paystack/verify-payment?reference=${reference}&amount=${
+                    Number(customPrice || product.price) * 100
+                }`
+            );
+
+            console.log("Payment Verification: ", response.data);
+            return response.data.success;
+        } catch (error) {
+            console.error("Error verifying payment:", error);
+        }
+    };
+
+    const checkout = async (values) => {
+        setIsLoading(true);
+        try {
+            const response = await axios.post(
+                `https://farmceries-backend.vercel.app/api/paystack/payment-link`,
+                {
+                    email: "basitbalogun10@gmail.com",
+                    callback_url: Linking.createURL("payment", {
+                        queryParams: {
+                            cancelled: false,
+                        },
+                    }),
+                    cancellation_url: Linking.createURL("payment", {
+                        queryParams: {
+                            cancelled: true,
+                        },
+                    }),
+                    amount: Number(customPrice || product.price) * 100, // Price in Kobo,
+                }
+            );
+
+            const paymentLink = response.data.data.authorization_url;
+            console.log("Payment Link: ", response.data);
+
+            await openBrowserAsync(paymentLink);
+            // Check result type (cancelled, dismissed or successful)
+            // If cancelled (clicked on Cancel), gets redirected with cancellation_url, restult type is 'dismiss'
+            // If dimissed (cliked on Done), no rediretion, result type is 'cancel'
+            // Verify payment
+            const isPaymentSuccessful = await verifyPayment(
+                response.data.data.reference
+            );
+            console.log("Is payment successful: ", isPaymentSuccessful);
+
+            if (isPaymentSuccessful) {
+                await addNewOrder();
+            }
+
+            router.push(`/(modals)/confirmPayment?isPaymentSuccessful=${isPaymentSuccessful}}`);
+
+            setPaymentSuccessful(true);
+            animation.current?.play();
+        } catch (error) {
+            console.error("Error completing payment:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        console.log("Payment result: ", paymentResult);
+    }, [paymentResult]);
+
+    useEffect(() => {
+        console.log("Payment data: ", paymentData);
+    }, [paymentData]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -282,31 +406,22 @@ const DetailsPage = () => {
                         </TouchableOpacity>
                     )}
 
-                    <Link href="/(modals)/payment" asChild>
-                        <TouchableOpacity
-                            style={defaultStyles.btn}
-                            className={`${
-                                (product.hasPriceRange && customPrice === "") ||
-                                priceError
-                                    ? "opacity-50"
-                                    : "opacity-100"
-                            } px-5`}
-                            disabled={
-                                (product.hasPriceRange && customPrice === "") ||
-                                priceError
-                            }
-                            onPress={() =>
-                                router.push({
-                                    pathName: "/(modals)/payment",
-                                    params: { productId: product.id },
-                                })
-                            }
-                        >
-                            <Text style={defaultStyles.btnText}>
-                                Buy Product
-                            </Text>
-                        </TouchableOpacity>
-                    </Link>
+                    <TouchableOpacity
+                        style={defaultStyles.btn}
+                        className={`${
+                            (product.hasPriceRange && customPrice === "") ||
+                            priceError
+                                ? "opacity-50"
+                                : "opacity-100"
+                        } px-5`}
+                        disabled={
+                            (product.hasPriceRange && customPrice === "") ||
+                            priceError
+                        }
+                        onPress={checkout}
+                    >
+                        <Text style={defaultStyles.btnText}>Buy Product</Text>
+                    </TouchableOpacity>
                 </View>
             </Animated.View>
         </View>

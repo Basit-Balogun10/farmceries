@@ -13,7 +13,7 @@ const Layout = () => {
                     fontFamily: "Rubik",
                 },
             }}
-    >
+        >
             <Tabs.Screen
                 name="index"
                 options={{
@@ -26,6 +26,7 @@ const Layout = () => {
             <Tabs.Screen
                 name="orders"
                 options={{
+                    title: "Orders",
                     tabBarLabel: "Orders",
                     tabBarIcon: ({ size, color }) => (
                         <MaterialCommunityIcons
@@ -39,8 +40,8 @@ const Layout = () => {
             <Tabs.Screen
                 name="profile"
                 options={{
+                    title: "Profile",
                     tabBarLabel: "Profile",
-
                     headerShown: false,
                     tabBarIcon: ({ size, color }) => (
                         <Ionicons
