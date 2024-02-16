@@ -64,10 +64,10 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
                 alert("Please select an image first");
                 return;
             }
-            console.log('Analyzing...')
+            console.log("Analyzing...");
 
             // console.log('key: ', GOOGLE_CLOUD_VISION_API_KEY)
-            const cloudVisionAPIURL = `https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBr9z-90n8yQKSy40iu522hCLL6mU_fGdU`;
+            const cloudVisionAPIURL = `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_CLOUD_VISION_API_KEY}`;
 
             const base64ImageData = await FileSystem.readAsStringAsync(
                 imageUri,
@@ -94,9 +94,11 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
 
             const response = await axios.post(cloudVisionAPIURL, requestsData);
             console.log("Analysis result: ", response);
-            const labels = response.data.responses[0].labelAnnotations.map( labelAnonotation => labelAnonotation.description )
-            console.log(`Labels: ${labels}`)
-            
+            const labels = response.data.responses[0].labelAnnotations.map(
+                (labelAnonotation) => labelAnonotation.description
+            );
+            console.log(`Labels: ${labels}`);
+
             handleMultipleSearch(labels);
         } catch (error) {
             console.error("Error analyzing image: ", error);
@@ -106,22 +108,22 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
 
     const handleMultipleSearch = (values) => {
         if (values.length === 0) {
-            setProduts(products)
+            setProduts(products);
         } else {
             let filteredProducts = [];
-            console.log('Values: ', values)
+            console.log("Values: ", values);
 
-            values.forEach(value => {
-                const filtered = handleSearch(value, true)
-                console.log('Filtered: ', filtered)
-                filteredProducts = [...filteredProducts, ...filtered]
-            })
-            console.log('Filtered Products: ', filteredProducts)
+            values.forEach((value) => {
+                const filtered = handleSearch(value, true);
+                console.log("Filtered: ", filtered);
+                filteredProducts = [...filteredProducts, ...filtered];
+            });
+            console.log("Filtered Products: ", filteredProducts);
 
             setSearchTerm("");
-            setProducts(Array.from(new Set(filteredProducts)))
+            setProducts(Array.from(new Set(filteredProducts)));
         }
-    }
+    };
 
     const handleSearch = (value, returnResult) => {
         setSearchTerm(value);
@@ -138,7 +140,7 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
             });
 
             if (returnResult) {
-                return filteredProducts
+                return filteredProducts;
             } else {
                 setProducts(filteredProducts);
             }
