@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import ListingsBottomSheet from "@/components/ListingsBottomSheet";
-import listingsData from "@/assets/data/airbnb-listings.json";
 import ListingsMap from "@/components/ListingsMap";
-import listingsDataGeo from "@/assets/data/airbnb-listings.geo.json";
 import { Stack, useLocalSearchParams } from "expo-router";
 import ExploreHeader from "@/components/ExploreHeader";
 import appData from "@/assets/data/appData.json";

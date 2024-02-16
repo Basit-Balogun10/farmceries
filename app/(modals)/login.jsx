@@ -22,14 +22,15 @@ import Colors from "@/constants/Colors";
 const Page = () => {
     const [expired, setExpired] = useState(false);
     const [verified, setVerified] = useState(false);
+    const { signUp, isLoaded, setActive } = useSignUp();
     // const { startMagicLinkFlow, cancelMagicLinkFlow } =
     //     signUp?.createMagicLinkFlow();
     const [hasInitiatedMagicLink, setHasInitiatedMagicLink] = useState(false);
     const [allDisabled, setAllDisabled] = useState(false);
 
     const router = useRouter();
-    // const redirectUrl = Linking.createURL("/");
-    // console.log("Deep link: ", redirectUrl);
+    const redirectUrl = Linking.createURL("/");
+    console.log("Deep link: ", redirectUrl);
 
     useWarmUpBrowser();
 
@@ -68,8 +69,6 @@ const Page = () => {
                 console.log("successful");
                 router.back();
             } else {
-                console.log("Signin object: ", signIn);
-                console.log("Signup object: ", signUp);
                 console.log(
                     "Unable to complete authentication, please check requirements"
                 );
@@ -86,7 +85,11 @@ const Page = () => {
 
     //     // Start the sign up flow, by collecting
     //     // the user's email address.
-    //     await signUp.create({ emailAddress: formData.email });
+    //     try {
+    //         await signUp.create({ emailAddress: formData.email });
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
 
     //     // Start the magic link flow.
     //     // Pass your app URL that users will be navigated
@@ -104,7 +107,7 @@ const Page = () => {
     //         // If you're handling the verification result from
     //         // another route/component, you should return here.
     //         // See the <MagicLinkVerification/> component as an
-    //         // example below.
+    //         // examplebelow.
     //         // If you want to complete the flow on this tab,
     //         // don't return. Check the sign up status instead.
     //         // return;
@@ -123,9 +126,9 @@ const Page = () => {
     //     }
     // };
 
-    // if (verified) {
-    //     return <AppText>Signed in on other tab</AppText>;
-    // }
+    if (verified) {
+        return <AppText>Signed in on other tab</AppText>;
+    }
 
     return (
         <View style={styles.container}>
@@ -135,9 +138,10 @@ const Page = () => {
                 }}
                 validationSchema={loginFormValidationSchema}
                 onSubmit={async (values, { setSubmitting }) => {
-                    setHasInitiatedMagicLink(true);
-                    await authWithMagicLink(values);
-                    setSubmitting(false);
+                    // setHasInitiatedMagicLink(true);
+                    // console.log("values: ", values);
+                    // await authWithMagicLink(values);
+                    // setSubmitting(false);
                 }}
             >
                 {({

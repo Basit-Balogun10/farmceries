@@ -45,7 +45,6 @@ const DetailsPage = () => {
     console.log("Data: ", appData, id);
     console.log("Product: ", product);
     const scrollRef = useAnimatedRef<Animated.ScrollView>();
-    const animation = useRef(null);
     const [priceError, setPriceError] = useState(false);
     const [customPrice, setCustomPrice] = useState("");
     const [paymentSuccessful, setPaymentSuccessful] = useState(false);
@@ -203,12 +202,14 @@ const DetailsPage = () => {
 
             if (isPaymentSuccessful) {
                 await addNewOrder();
+            } else {
+                
+
             }
 
-            router.push(`/(modals)/confirmPayment?isPaymentSuccessful=${isPaymentSuccessful}}`);
+            router.push(`/(modals)/confirmPayment?isPaymentSuccessful=${isPaymentSuccessful}`);
 
             setPaymentSuccessful(true);
-            animation.current?.play();
         } catch (error) {
             console.error("Error completing payment:", error);
         } finally {

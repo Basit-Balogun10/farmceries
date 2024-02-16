@@ -1,4 +1,5 @@
 import {
+    ActivityIndicator,
     View,
     Text,
     SafeAreaView,
@@ -7,12 +8,19 @@ import {
     TouchableOpacity,
     TextInput,
 } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Colors from "@/constants/Colors";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+    FontAwesome5,
+    Ionicons,
+    MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
+import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from "expo-file-system";
 import { Link } from "expo-router";
 import appData from "@/assets/data/appData.json";
+import axios from "axios";
 
 interface Props {
     onCategoryChanged: (category: string) => void;
@@ -25,10 +33,98 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
     const itemsRef = useRef<Array<TouchableOpacity | null>>([]);
     const [activeIndex, setActiveIndex] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
+    const [labels, setLabels] = useState([]);
     const categories = appData.categories;
 
-    const handleSearch = (value) => {
-        setSearchTerm(value)
+    const GOOGLE_CLOUD_VISION_API_KEY =
+        process.env.EXPO_GOOGLE_CLOUD_VISION_API_KEY;
+
+    const pickImage = async () => {
+        try {
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            });
+
+            if (!result.canceled) {
+                const imageUri = result.assets[0].uri;
+                analyzeImage(imageUri);
+            }
+        } catch (error) {
+            console.log("Error in picking image: ", error);
+            alert("Unable to select your image. Please retry.");
+        }
+    };
+
+    const analyzeImage = async (imageUri: string) => {
+        try {
+            if (!imageUri) {
+                alert("Please select an image first");
+                return;
+            }
+            console.log('Analyzing...')
+
+            // console.log('key: ', GOOGLE_CLOUD_VISION_API_KEY)
+            const cloudVisionAPIURL = `https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBr9z-90n8yQKSy40iu522hCLL6mU_fGdU`;
+
+            const base64ImageData = await FileSystem.readAsStringAsync(
+                imageUri,
+                {
+                    encoding: FileSystem.EncodingType.Base64,
+                }
+            );
+
+            const requestsData = {
+                requests: [
+                    {
+                        image: {
+                            content: base64ImageData,
+                        },
+                        features: [
+                            {
+                                type: "LABEL_DETECTION",
+                                maxResults: 30,
+                            },
+                        ],
+                    },
+                ],
+            };
+
+            const response = await axios.post(cloudVisionAPIURL, requestsData);
+            console.log("Analysis result: ", response);
+            const labels = response.data.responses[0].labelAnnotations.map( labelAnonotation => labelAnonotation.description )
+            console.log(`Labels: ${labels}`)
+            
+            handleMultipleSearch(labels);
+        } catch (error) {
+            console.error("Error analyzing image: ", error);
+            alert("Unable to analyze your image. Please try again later.");
+        }
+    };
+
+    const handleMultipleSearch = (values) => {
+        if (values.length === 0) {
+            setProduts(products)
+        } else {
+            let filteredProducts = [];
+            console.log('Values: ', values)
+
+            values.forEach(value => {
+                const filtered = handleSearch(value, true)
+                console.log('Filtered: ', filtered)
+                filteredProducts = [...filteredProducts, ...filtered]
+            })
+            console.log('Filtered Products: ', filteredProducts)
+
+            setSearchTerm("");
+            setProducts(Array.from(new Set(filteredProducts)))
+        }
+    }
+
+    const handleSearch = (value, returnResult) => {
+        setSearchTerm(value);
         if (value === "") {
             setProducts(products);
         } else {
@@ -40,7 +136,12 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
                     )
                 );
             });
-            setProducts(filteredProducts);
+
+            if (returnResult) {
+                return filteredProducts
+            } else {
+                setProducts(filteredProducts);
+            }
         }
     };
 
@@ -54,16 +155,33 @@ const ExploreHeader = ({ onCategoryChanged, products, setProducts }: Props) => {
         onCategoryChanged(categories[index].name);
     };
 
+    useEffect(() => {
+        console.log("Labels: ", labels);
+    }, [labels]);
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
             <View style={styles.container}>
+                {/* <Text className="font-bold text-2xl pl-4 mt-4 mb-2">Welcome, {user.firstName}</Text> */}
                 <View style={styles.actionRow}>
-                    <TextInput
-                        style={styles.searchBtn}
-                        onChangeText={handleSearch}
-                        value={searchTerm}
-                        placeholder="Search products"
-                    />
+                    <View className="relative">
+                        <TextInput
+                            style={styles.searchBtn}
+                            onChangeText={handleSearch}
+                            value={searchTerm}
+                            placeholder="Search products"
+                        />
+                        <TouchableOpacity
+                            className="absolute right-4 top-3"
+                            onPress={pickImage}
+                        >
+                            <FontAwesome5
+                                name="camera"
+                                size={20}
+                                color="black"
+                            />
+                        </TouchableOpacity>
+                    </View>
                     <Link href={"/(modals)/filter"} asChild>
                         <TouchableOpacity style={styles.filterBtn}>
                             <Ionicons name="options-outline" size={24} />
@@ -120,6 +238,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff",
         height: 130,
+        // height: 170,
         elevation: 2,
         shadowColor: "#000",
         shadowOpacity: 0.1,

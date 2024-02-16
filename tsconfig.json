@@ -7,6 +7,13 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts", "app/(modals)/login.jsx", "app/(modals)/confirmPayment.jsx"],
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        ".expo/types/**/*.ts",
+        "expo-env.d.ts",
+        "app/(modals)/login.jsx",
+        "app/(modals)/confirmPayment.jsx"
+    ],
     "jsx": "react"
 }

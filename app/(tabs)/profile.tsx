@@ -136,16 +136,17 @@ const Page = () => {
 
           {isSignedIn && (
               <TouchableOpacity
-              onPress={() => signOut()}
-                      style={defaultStyles.btn}
-                  >
-                      <Text style={defaultStyles.btnText}>Log Out</Text>
-                  </TouchableOpacity>
+                  onPress={() => signOut()}
+                  style={defaultStyles.btn}
+                  className="w-1/2 self-center"
+              >
+                  <Text style={defaultStyles.btnText}>Log Out</Text>
+              </TouchableOpacity>
           )}
           {!isSignedIn && (
               <Link href={"/(modals)/login"} asChild>
                   <TouchableOpacity
-                      className="w-1/2"
+                      className="w-1/2 self-center"
                       style={defaultStyles.btn}
                   >
                       <Text style={defaultStyles.btnText}>Log In</Text>

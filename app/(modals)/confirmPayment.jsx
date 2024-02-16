@@ -15,6 +15,8 @@ const confirmPayment = () => {
     const router = useRouter();
     const params = useLocalSearchParams();
     const { isPaymentSuccessful } = params;
+
+    console.log("isPaymentSuccessful confirmation: ", isPaymentSuccessful);
     const { user } = useUser();
 
     // useEffect(() => {
@@ -34,7 +36,7 @@ const confirmPayment = () => {
 
     return (
         <View className="flex-1 px-4">
-            {isPaymentSuccessful ? (
+            {isPaymentSuccessful === "true" ? (
                 <View className={`flex-1 items-center mt-12`}>
                     <AppText className="text-lg font-semibold">
                         Payment Successful
